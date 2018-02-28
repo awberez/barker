@@ -90,11 +90,11 @@ class Form extends Component {
             API.signUp(userObj)
               .then(res => {
                 console.log(res);
-                /*if (res.data.users[0].id) this.setState({userId: res.data.users[0].id, modal: true});
+                if (res.data.id) this.setState({userId: res.data.id, modal: true});
                 else {
                     fieldValidationErrors.email = 'is already in use';
                     this.setState({ formErrors: fieldValidationErrors })
-                }*/
+                }
               })
               .catch(err => console.log(err));
         }
