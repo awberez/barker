@@ -15,8 +15,6 @@ class Profile extends Component {
   	API.getUser(userObj)
       .then(res => this.setState({ user: res.data.users[0] }, ()=>{console.log(this.state.user);}))
       .catch(err => console.log(err));
-  	//userObj.id = this.props.match.params.userId;
-  	//this.setState({ user: userObj }, ()=>{console.log(this.state.user);});
   }
 
   matchButton = () => {

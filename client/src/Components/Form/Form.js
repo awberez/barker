@@ -78,7 +78,8 @@ class Form extends Component {
         if (!this.state.signup) {
             API.logIn(userObj)
               .then(res => {
-                if (res.data.users[0].id) this.props.history.push(`/profile/${res.data.users[0].id}`);
+                console.log(res);
+                if (res.data.id) this.props.history.push(`/profile/${res.data.id}`);
                 else {
                     fieldValidationErrors.invalid = 'email or password';
                     this.setState({ formErrors: fieldValidationErrors })

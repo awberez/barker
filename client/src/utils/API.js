@@ -1,5 +1,5 @@
 import axios from "axios";
-import MockAdapter from 'axios-mock-adapter';
+/*import MockAdapter from 'axios-mock-adapter';
 
   const mock = new MockAdapter(axios);
   
@@ -38,13 +38,13 @@ import MockAdapter from 'axios-mock-adapter';
     users: [
       { id: 2 }, { id: 3 }, { id: 4 }
     ]
-  });
+  });*/
 
 export default {
 
   logIn: function(loginData) {
     //return "1";
-    return axios.get("/api/login", loginData);
+    return axios.post("/api/login", loginData);
   },
 
   signUp: function(signupData) {
