@@ -53,7 +53,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>First Name:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="fname"
                                         type="text"
@@ -66,7 +65,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Last Name:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="lname"
                                         type="text"
@@ -79,7 +77,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Address:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="addr1"
                                         type="text"
@@ -98,7 +95,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>City:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="city"
                                         type="text"
@@ -112,7 +108,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>State:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="state"
                                         type="text"
@@ -125,7 +120,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Zip:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="zip"
                                         type="text"
@@ -145,7 +139,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Profile:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="owner_profile"
                                         type="text"
@@ -160,7 +153,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Dog Name:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="dog_name"
                                         type="text"
@@ -173,7 +165,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Dog Breed:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="breed"
                                         type="text"
@@ -189,7 +180,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Dog Gender:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="sex"
                                         type="text"
@@ -202,7 +192,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Dog Age:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="age"
                                         type="text"
@@ -218,7 +207,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Demeanor:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="demeanor"
                                         type="text"
@@ -231,7 +219,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Dog Size:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="size"
                                         type="text"
