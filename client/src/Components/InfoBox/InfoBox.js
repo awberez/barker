@@ -12,14 +12,21 @@ const InfoBox = props => (
 				</button>
 	        </div>
 		  : <form onSubmit={props.handleSubmit}>
-				{props.type === "radio" 
+				{props.type === "radio" && props.title === "Sex"
 					? 	<div onChange={props.handleChange}>
 							<input type="radio" name="gender" value="Male" /> Male<br></br>
 			  				<input type="radio" name="gender" value="Female" /> Female<br></br>
 						</div>
-					: 	props.type === "textarea"
-						?	<textarea className="profileText" value={props.newData} onChange={props.handleChange} />
-						:   <input type={props.type} className="profileText" value={props.newData} onChange={props.handleChange} />
+					: 	props.type === "radio" && props.title === "Size"
+						? 	<div onChange={props.handleChange}>
+								<input type="radio" name="size" value="Small" /> Small<br></br>
+				  				<input type="radio" name="size" value="Medium" /> Medium<br></br>
+				  				<input type="radio" name="size" value="Large" /> Large<br></br>
+				  				<input type="radio" name="size" value="Extra Large" /> Extra Large<br></br>
+							</div>
+							:	props.type === "textarea"
+								?	<textarea className="profileText" value={props.newData} onChange={props.handleChange} />
+								:   <input type={props.type} className="profileText" value={props.newData} onChange={props.handleChange} />
 				}
 				<input type="submit" value="Save" />
 				<input type='button' value="Cancel" onClick={()=>{props.button(false)}} />

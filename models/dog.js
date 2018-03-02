@@ -19,7 +19,7 @@ id: {type: DataTypes.INTEGER,
     sex: {type: DataTypes.STRING,
         allowNull: false
     },
-    age: {type: DataTypes.DATEONLY, 
+    age: {type: DataTypes.INTEGER, 
         allowNull: false
     },
     dog_weight: {type: DataTypes.INTEGER,
