@@ -37,6 +37,33 @@ module.exports = (app, passport)=>{
 	    });
     });
 
+    app.post('/api/newuser', (req, res)=>{
+        db.user.findOne({where: {id: req.body.userId}
+        }).then((dbuser)=>{
+            dbuser.update({
+                fname: req.body.fname,
+                lname: req.body.lname,
+                addr1: req.body.addr1,
+                city: req.body.city,
+                state: req.body.state,
+                zip: req.body.zip,
+                owner_profile: req.body.owner_profile
+            }).then(updatedUser =>{
+                db.dog.create({
+                    owner_id: req.body.id,
+                    dog_name: req.body.dog_name,
+                    breed: req.body.breed,
+                    sex: req.body.sex,
+                    age: req.body.age,
+                    demeanor: req.body.demeanor,
+                    size: req.body.size
+                }).then(() => {
+                    res.json(updatedUser);
+                })
+            })
+        })            
+    });
+
 	app.get('/api/profile', isLoggedIn, (req, res)=>{
 		res.render('profile.ejs', { user: req.user });
 	});
