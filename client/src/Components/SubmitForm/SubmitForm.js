@@ -5,19 +5,19 @@ import "./SubmitForm.css";
 
 class SubmitForm extends React.Component {
     state = {
-        firstName: "",
-        lastName: "",
-        address: "",
+        fname: "",
+        lname: "",
+        addr1: "",
         city: "",
         state: "",
         zip: "",
-        profile: "",
-        dogName: "",
+        owner_profile: "",
+        dog_name: "",
         breed: "",
         sex: "",
         age: "",
         size: "",
-        demeanor: "",
+        demeanor: ""
     }
 
     handleUserInput = (e) => {
@@ -55,11 +55,11 @@ class SubmitForm extends React.Component {
                                     <input
                                         id="formName"
                                         className="form-input"
-                                        name="firstName"
+                                        name="fname"
                                         type="text"
                                         required
                                         onChange={this.handleUserInput}
-                                        value={this.state.firstName}
+                                        value={this.state.fname}
                                     />
                                 </fieldset>
 
@@ -68,11 +68,11 @@ class SubmitForm extends React.Component {
                                     <input
                                         id="formName"
                                         className="form-input"
-                                        name="lastName"
+                                        name="lname"
                                         type="text"
                                         required
                                         onChange={this.handleUserInput}
-                                        value={this.state.lastName}
+                                        value={this.state.lname}
                                     />
                                 </fieldset>
 
@@ -81,11 +81,11 @@ class SubmitForm extends React.Component {
                                     <input
                                         id="formName"
                                         className="form-input"
-                                        name="address"
+                                        name="addr1"
                                         type="text"
                                         required
                                         onChange={this.handleUserInput}
-                                        value={this.state.address}
+                                        value={this.state.addr1}
                                     />
                                 </fieldset>
 
@@ -147,11 +147,11 @@ class SubmitForm extends React.Component {
                                     <input
                                         id="formName"
                                         className="form-input"
-                                        name="profile"
+                                        name="owner_profile"
                                         type="text"
                                         required
                                         onChange={this.handleChange}
-                                        value={this.state.profile}
+                                        value={this.state.owner_profile}
                                     />
                                 </fieldset>
                             </div>
@@ -162,11 +162,11 @@ class SubmitForm extends React.Component {
                                     <input
                                         id="formName"
                                         className="form-input"
-                                        name="dogName"
+                                        name="dog_name"
                                         type="text"
                                         required
                                         onChange={this.handleChange}
-                                        value={this.state.dogName}
+                                        value={this.state.dog_name}
                                     />
                                 </fieldset>
 
