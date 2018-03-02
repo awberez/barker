@@ -33,24 +33,24 @@ class Profile extends Component {
 	    		<div className="userInfo">
 		      		<ProfileInfo
 						title={"First Name"}
-						val={"firstName"}
+						val={"fname"}
 						id={this.props.match.params.userId}
 						type={"text"}
-						data={this.state.user.firstName}
+						data={this.state.user.fname}
 			        />
 			        <ProfileInfo
 						title={"Last Name"}
-						val={"lastName"}
+						val={"lname"}
 						id={this.props.match.params.userId}
 						type={"text"}
-						data={this.state.user.lastName}
+						data={this.state.user.lname}
 			        />
 			        <ProfileInfo
 						title={"Address"}
-						val={"address"}
+						val={"addr1"}
 						id={this.props.match.params.userId}
 						type={"text"}
-						data={this.state.user.address}
+						data={this.state.user.addr1}
 			        />
 			        <ProfileInfo
 						title={"City"}
@@ -58,6 +58,13 @@ class Profile extends Component {
 						id={this.props.match.params.userId}
 						type={"text"}
 						data={this.state.user.city}
+			        />
+			        <ProfileInfo
+						title={"State"}
+						val={"state"}
+						id={this.props.match.params.userId}
+						type={"text"}
+						data={this.state.user.state}
 			        />
 			        <ProfileInfo
 						title={"ZIP"}
@@ -68,19 +75,19 @@ class Profile extends Component {
 			        />
 			        <ProfileInfo
 						title={"About Me"}
-						val={"profile"}
+						val={"owner_profile"}
 						id={this.props.match.params.userId}
 						type={"textarea"}
-						data={this.state.user.profile}
+						data={this.state.user.owner_profile}
 			        />
 		      	</div>
 		      	<div className="dogInfo">
 		      	 	<ProfileInfo
 						title={"Dog Name"}
-						val={"dogName"}
+						val={"dog_name"}
 						id={this.props.match.params.userId}
 						type={"text"}
-						data={this.state.user.dogName}
+						data={this.state.user.dog_name}
 			        />
 			        <ProfileInfo
 						title={"Breed"}
@@ -104,11 +111,18 @@ class Profile extends Component {
 						data={this.state.user.age}
 			        />
 			        <ProfileInfo
-						title={"Weight (lbs)"}
-						val={"weight"}
+						title={"Demeanor"}
+						val={"demeanor"}
 						id={this.props.match.params.userId}
 						type={"number"}
-						data={this.state.user.weight}
+						data={this.state.user.demeanor}
+			        />
+			        <ProfileInfo
+						title={"Size"}
+						val={"size"}
+						id={this.props.match.params.userId}
+						type={"radio"}
+						data={this.state.user.size}
 			        />
 		      	</div>
 		    </div>

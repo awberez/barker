@@ -1,5 +1,5 @@
 import axios from "axios";
-/*import MockAdapter from 'axios-mock-adapter';
+import MockAdapter from 'axios-mock-adapter';
 
   const mock = new MockAdapter(axios);
   
@@ -11,18 +11,19 @@ import axios from "axios";
 
   mock.onGet('/api/user').reply(200, {
     users: [{
-      firstName: "Alex",
-      lastName: "",
-      address: "",
+      fname: "Alex",
+      lname: "",
+      addr1: "",
       city: "",
       state: "",
       zip: "",
-      profile: "",
-      dogName: "",
+      owner_profile: "",
+      dog_name: "",
       breed: "",
       sex: "",
       age: "",
-      weight: ""
+      demeanor: "",
+      size: ""
     }]
   });
 
@@ -37,7 +38,7 @@ import axios from "axios";
     users: [
       { id: 2 }, { id: 3 }, { id: 4 }
     ]
-  });*/
+  });
 
 export default {
 
