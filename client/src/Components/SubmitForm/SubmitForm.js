@@ -16,7 +16,8 @@ class SubmitForm extends React.Component {
         breed: "",
         sex: "",
         age: "",
-        weight: ""
+        size: "",
+        demeanor: "",
     }
 
     handleUserInput = (e) => {
@@ -45,8 +46,203 @@ class SubmitForm extends React.Component {
                             <p>Sign Up</p>
                         </div>
                         
-                        <div className='modal-body'>
-                            {/*form fields go here*/}
+                        <div className='modal-body flex'>
+
+                            <div>
+
+                                <fieldset className="form-group">
+                                    <p>First Name:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="firstName"
+                                        type="text"
+                                        required
+                                        onChange={this.handleUserInput}
+                                        value={this.state.firstName}
+                                    />
+                                </fieldset>
+
+                                <fieldset className="form-group">
+                                    <p>Last Name:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="lastName"
+                                        type="text"
+                                        required
+                                        onChange={this.handleUserInput}
+                                        value={this.state.lastName}
+                                    />
+                                </fieldset>
+
+                                <fieldset className="form-group">
+                                    <p>Address:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="address"
+                                        type="text"
+                                        required
+                                        onChange={this.handleUserInput}
+                                        value={this.state.address}
+                                    />
+                                </fieldset>
+
+
+                            </div>
+
+                            <div>
+
+
+                                <fieldset className="form-group">
+                                    <p>City:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="city"
+                                        type="text"
+                                        required
+                                        onChange={this.handleUserInput}
+                                        value={this.state.city}
+                                    />
+                                </fieldset>
+
+
+                                <fieldset className="form-group">
+                                    <p>State:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="state"
+                                        type="text"
+                                        required
+                                        onChange={this.handleUserInput}
+                                        value={this.state.state}
+                                    />
+                                </fieldset>
+
+                                <fieldset className="form-group">
+                                    <p>Zip:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="zip"
+                                        type="text"
+                                        required
+                                        onChange={this.handleChange}
+                                        value={this.state.zip}
+                                    />
+                                </fieldset>
+
+
+                            </div>
+
+                            <div>
+
+
+
+                                <fieldset className="form-group">
+                                    <p>Profile:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="profile"
+                                        type="text"
+                                        required
+                                        onChange={this.handleChange}
+                                        value={this.state.profile}
+                                    />
+                                </fieldset>
+                            </div>
+                            <div>
+
+                                <fieldset className="form-group">
+                                    <p>Dog Name:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="dogName"
+                                        type="text"
+                                        required
+                                        onChange={this.handleChange}
+                                        value={this.state.dogName}
+                                    />
+                                </fieldset>
+
+                                <fieldset className="form-group">
+                                    <p>Dog Breed:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="breed"
+                                        type="text"
+                                        required
+                                        onChange={this.handleChange}
+                                        value={this.state.breed}
+                                    />
+                                </fieldset>
+
+                            </div>
+                            <div>
+
+                                <fieldset className="form-group">
+                                    <p>Dog Gender:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="sex"
+                                        type="text"
+                                        required
+                                        onChange={this.handleChange}
+                                        value={this.state.sex}
+                                    />
+                                </fieldset>
+
+                                <fieldset className="form-group">
+                                    <p>Dog Age:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="age"
+                                        type="text"
+                                        required
+                                        onChange={this.handleChange}
+                                        value={this.state.age}
+                                    />
+                                </fieldset>
+
+                            </div>
+
+                            <div>
+                                <fieldset className="form-group">
+                                    <p>Demeanor:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="demeanor"
+                                        type="text"
+                                        required
+                                        onChange={this.handleChange}
+                                        value={this.state.demeanor}
+                                    />
+                                </fieldset>
+
+                                <fieldset className="form-group">
+                                    <p>Dog Size:</p>
+                                    <input
+                                        id="formName"
+                                        className="form-input"
+                                        name="size"
+                                        type="text"
+                                        required
+                                        onChange={this.handleChange}
+                                        value={this.state.size}
+                                    />
+                                </fieldset>
+
+                            </div>
+
                         </div>
                         <div className='modal-footer'></div>
                         <button type="submit" onClick={this.handleSubmit}>Sign Up</button>
