@@ -3,55 +3,43 @@ var db = require("../models");
 var bcrypt = require ("bcrypt");
 
 module.exports = (app, passport)=>{
-
 	app.post('/api/login', (req, res)=>{
         db.user.findOne({where: {user_login : req.body.user_login}
         }).then((user)=>{
             bcrypt.compare(req.body.user_passwd, user.user_passwd, (err, loginSuccess)=>{
                if (loginSuccess){ 
-                   res.json({status: "succes"})
+                   res.json(user)
                 }
                else{
-                    res.json({status: "failure"})
+                    res.json(false)
                }
         
             })
         });
         
     });
-	
-    
-    app.post('/api/login', passport.authenticate('local-login', {
-		successRedirect: '/profile',
-		failureRedirect: '/login',
-		failureFlash: true
-	}));
 
 	app.post('/api/signup', (req, res)=>{
-		
-        const {user_login, user_passwd} = req.body;
-        console.log(req.body);
-        bcrypt.hash(user_passwd, 10, (err, hash)=>{
-            console.log(hash);
-            db.user.create({user_login: user_login, user_passwd: hash})
-            .then(newUser => {
-                res.json(newUser);
-            })   
-        })  
+		db.user.findOne({where: {user_login : req.body.user_login}
+        }).then((user)=>{
+        	if (user) res.json(false);
+        	else {
+		        const {user_login, user_passwd} = req.body;
+		        console.log(req.body);
+		        bcrypt.hash(user_passwd, 10, (err, hash)=>{
+		            console.log(hash);
+		            db.user.create({user_login: user_login, user_passwd: hash})
+		            .then(newUser => {
+		                res.json(newUser);
+		            })   
+		        })
+		    }
+	    });
     });
-
-
-	app.post('/api/signup', passport.authenticate('local-signup', {
-		successRedirect: '/',
-		failureRedirect: '/signup',
-		failureFlash: true
-	}));
 
 	app.get('/api/profile', isLoggedIn, (req, res)=>{
 		res.render('profile.ejs', { user: req.user });
 	});
-
-
 
 	app.get('/api/:username/:password', (req, res)=>{
 		var newUser = new User();
