@@ -34,15 +34,22 @@
     position: fixed;
     border: 1px solid lightgray;
     border-radius: 6px;
-    background: white;
-    width: 600px;
+    background: #6B7A8F;
+    opacity: .97;
+    width: 1200px;
     min-height: 300px;
     left: 50%;
     top: 20%;
-    margin-left: -300px;
+    margin-left: -600px;
     display: none;
+
 }
 
 .modal-container.modal-container-active {
     display: block;
+}
+
+
+.flex {
+    display: flex;
 }
