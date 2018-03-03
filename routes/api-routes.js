@@ -35,7 +35,7 @@ module.exports = (app, passport)=>{
 		            db.User.create({user_login: user_login, user_passwd: hash})
 		            .then(newUser => {
 		                res.json(newUser);
-		            })   
+		            })  
 		        })
 		    }
 	    });
@@ -101,6 +101,24 @@ module.exports = (app, passport)=>{
 			});
 		});
 	});
+
+	app.get('/api/matches/:id', (req, res)=>{
+       db.User.findOne({
+			where: {
+			   id: req.params.id
+			}
+			}).then(user => {db.User.findAll({
+			   where: {
+			       city: user.city,
+			       id: {
+			           [Op.ne]: req.params.id
+			       }
+			   },
+			   attributes: ['id']
+			}).then(ids => {res.json(ids);
+       		});
+       });
+   });
 };
 
 
