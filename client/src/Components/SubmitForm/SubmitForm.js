@@ -5,14 +5,14 @@ import "./SubmitForm.css";
 
 class SubmitForm extends React.Component {
     state = {
-        firstName: "",
-        lastName: "",
-        address: "",
+        fname: "",
+        lname: "",
+        addr1: "",
         city: "",
         state: "",
         zip: "",
-        profile: "",
-        dogName: "",
+        owner_profile: "",
+        dog_name: "",
         breed: "",
         sex: "",
         age: "",
@@ -31,9 +31,9 @@ class SubmitForm extends React.Component {
         let userObj = this.state;
         userObj.userId = this.props.userId;
         console.log(userObj);
-            API.createUser(userObj)
-              .then(res => this.props.history.push(`/profile/${this.props.userId}`))
-              .catch(err => console.log(err));
+        API.createUser(userObj)
+          .then(res => this.props.history.push("/profile"))
+          .catch(err => console.log(err));
     }
 
     render () {
@@ -41,7 +41,7 @@ class SubmitForm extends React.Component {
         return (
             <div>
                 <div className={containerClass}>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div className='modal-header'>
                             <p>Sign Up</p>
                         </div>
@@ -53,13 +53,12 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>First Name:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
-                                        name="firstName"
+                                        name="fname"
                                         type="text"
                                         required
                                         onChange={this.handleUserInput}
-                                        value={this.state.firstName}
+                                        value={this.state.fname}
                                     />
                                     <span className='highlight'></span>
                                     <span className='bar'></span>
@@ -68,26 +67,24 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Last Name:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
-                                        name="lastName"
+                                        name="lname"
                                         type="text"
                                         required
                                         onChange={this.handleUserInput}
-                                        value={this.state.lastName}
+                                        value={this.state.lname}
                                     />
                                 </fieldset>
 
                                 <fieldset className="form-group">
                                     <p>Address:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
-                                        name="address"
+                                        name="addr1"
                                         type="text"
                                         required
                                         onChange={this.handleUserInput}
-                                        value={this.state.address}
+                                        value={this.state.addr1}
                                     />
                                 </fieldset>
 
@@ -100,7 +97,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>City:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="city"
                                         type="text"
@@ -114,7 +110,6 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>State:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="state"
                                         type="text"
@@ -127,12 +122,11 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Zip:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="zip"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.zip}
                                     />
                                 </fieldset>
@@ -147,38 +141,35 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Profile:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
-                                        name="profile"
+                                        name="owner_profile"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
-                                        value={this.state.profile}
+                                        onChange={this.handleUserInput}
+                                        value={this.state.owner_profile}
                                     />
                                 </fieldset>
 
                                 <fieldset className="form-group">
                                     <p>Dog Name:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
-                                        name="dogName"
+                                        name="dog_name"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
-                                        value={this.state.dogName}
+                                        onChange={this.handleUserInput}
+                                        value={this.state.dog_name}
                                     />
                                 </fieldset>
 
                                 <fieldset className="form-group">
                                     <p>Dog Breed:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="breed"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.breed}
                                     />
                                 </fieldset>
@@ -190,25 +181,23 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Dog Gender:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="sex"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.sex}
                                     />
                                 </fieldset>
 
                                 <fieldset className="form-group">
-                                    <p>Dog Age:</p>
+                                    <p>Dog Age (years):</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="age"
-                                        type="text"
+                                        type="number"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.age}
                                     />
                                 </fieldset>
@@ -216,12 +205,11 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Demeanor:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="demeanor"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.demeanor}
                                     />
                                 </fieldset>
@@ -234,12 +222,11 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Dog Size:</p>
                                     <input
-                                        id="formName"
                                         className="form-input"
                                         name="size"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.size}
                                     />
                                 </fieldset>
@@ -248,7 +235,7 @@ class SubmitForm extends React.Component {
 
                         </div>
                         <div className='modal-footer'></div>
-                        <button type="submit" onClick={this.handleSubmit}>Sign Up</button>
+                        <button type="submit">Sign Up</button>
                     </form>
                 </div>
             </div>

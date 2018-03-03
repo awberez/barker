@@ -19,6 +19,11 @@ class Form extends Component {
         }
     }
 
+    componentDidMount() {
+        let userObj = {userId: this.props.userId};
+        if (userObj.userId) this.props.history.push('/profile');
+      }
+
     handleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -79,7 +84,10 @@ class Form extends Component {
             API.logIn(userObj)
               .then(res => {
                 console.log(res);
-                if (res.data.id) this.props.history.push(`/profile/${res.data.id}`);
+                if (res.data.id) {
+                    this.props.handler(res.data.id);
+                    this.props.history.push("/profile");
+                }
                 else {
                     fieldValidationErrors.invalid = 'email or password';
                     this.setState({ formErrors: fieldValidationErrors })
@@ -91,7 +99,10 @@ class Form extends Component {
             API.signUp(userObj)
               .then(res => {
                 console.log(res);
-                if (res.data.id) this.setState({userId: res.data.id, modal: true});
+                if (res.data.id) {
+                    this.props.handler(res.data.id);
+                    this.setState({userId: res.data.id, modal: true});
+                }
                 else {
                     fieldValidationErrors.email = 'is already in use';
                     this.setState({ formErrors: fieldValidationErrors })

@@ -58,11 +58,15 @@ export default {
   },
 
   getUser: function(userData) {
-    return axios.get("/api/user", userData);
+    return axios.get(`/api/profile/${userData.userId}`);
   },
 
   updateUser: function(userData) {
-    return axios.post("/api/newuser", userData);
+    return axios.post("/api/updateuser", userData);
+  },
+
+  updateDog: function(dogData) {
+    return axios.post("/api/updatedog", dogData);
   },
 
   findMatches: function(searchData) {

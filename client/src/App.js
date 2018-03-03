@@ -7,21 +7,46 @@ import Profile from "./Components/Profile";
 import Discover from "./Components/Discover";
 
 class App extends Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.handler = this.handler.bind(this);
+      }
 
+    handler(id) {
+        this.setState({ userId: id });
+        localStorage.setItem("userId", id);
+        console.log(this.state.userId);
+      }
+
+    componentWillMount() {
+        let userId = localStorage.getItem("userId");
+        this.setState({ userId: userId ? userId : false })
+      }
+
+    logOut = () => {
+        this.setState({ userId: '' });
+        localStorage.setItem("userId", '');
+        window.location.reload();
+    }
+
+    render() {
         return (
             <Router>
                 <div>
-                    <Header><h1>Dog "Tinder"</h1></Header>
+                    <Header>
+                        <h1>Dog "Tinder"</h1>
+                        { this.state && this.state.userId &&
+                            <button className="logout-btn" onClick={this.logOut}>Log Out</button>
+                        }
+                    </Header>
                     <Switch>
-                        <Route exact path="/" component={Form} />
-                        <Route path="/profile/:userId" component={Profile} />
-                        <Route path="/discover/:userId" component={Discover} />
+                        <Route exact path="/" render={props => <Form {...props} userId = {this.state.userId} handler = {this.handler} />} />
+                        <Route path="/profile" render={props => <Profile {...props} userId = {this.state.userId} />} />
+                        <Route path="/discover" render={props => <Discover {...props} userId = {this.state.userId} />} />
                     </Switch>
                 </div>
             </Router>
         );
-
     }
 }
 export default App;
