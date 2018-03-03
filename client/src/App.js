@@ -7,21 +7,30 @@ import Profile from "./Components/Profile";
 import Discover from "./Components/Discover";
 
 class App extends Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {userId: ''};
+        this.handler = this.handler.bind(this);
+      }
 
+    handler(id) {
+        this.setState({ userId: id });
+        console.log(this.state.userId);
+      }
+
+    render() {
         return (
             <Router>
                 <div>
                     <Header><h1>Dog "Tinder"</h1></Header>
                     <Switch>
-                        <Route exact path="/" component={Form} />
-                        <Route path="/profile/:userId" component={Profile} />
-                        <Route path="/discover/:userId" component={Discover} />
+                        <Route exact path="/" render={props => <Form {...props} handler = {this.handler} />} />
+                        <Route path="/profile" render={props => <Profile {...props} userId = {this.state.userId} />} />
+                        <Route path="/discover" render={props => <Discover {...props} userId = {this.state.userId} />} />
                     </Switch>
                 </div>
             </Router>
         );
-
     }
 }
 export default App;
