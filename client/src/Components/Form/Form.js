@@ -19,6 +19,11 @@ class Form extends Component {
         }
     }
 
+    componentDidMount() {
+        let userObj = {userId: this.props.userId};
+        if (userObj.userId) this.props.history.push('/profile');
+      }
+
     handleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
