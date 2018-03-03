@@ -1,7 +1,7 @@
 var bcrypt = require ("bcrypt");
 
 module.exports = (sequelize, DataTypes) => {
-  var user = sequelize.define("user", {
+  var User = sequelize.define("User", {
     id: {type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
@@ -56,5 +56,5 @@ module.exports = (sequelize, DataTypes) => {
        return bcrypt.compareSync(user.user_passwd, this.user_passwd)
 
    }) */
-  return user;
+  return User;
 };
