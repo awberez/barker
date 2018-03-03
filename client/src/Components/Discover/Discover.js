@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
+import DiscoverCard from "../DiscoverCard";
 import './Discover.css';
 
 class Discover extends Component {
     constructor (props) {
         super(props);
         this.state = {
-        	userMatches: [],
-        	dogMatches: []
         }
     }
 
@@ -23,7 +22,7 @@ class Discover extends Component {
 	        else {
 	        	API.findMatches(userObj)
 			      .then(res => {
-			      	this.setState({ matches: res.data }, ()=>{
+			      	this.setState({ matches: res.data, userMatches: [], dogMatches: [] }, ()=>{
 			      		console.log(res);
 			      		this.state.matches.forEach(id => {
 			      			console.log(id);
@@ -34,7 +33,7 @@ class Discover extends Component {
 						      	    let userMatches = this.state.userMatches, dogMatches = this.state.dogMatches;
 						      	    userMatches.push(res.data.user);
 						      	    dogMatches.push(res.data.dog);
-						      	    this.setState({userMatches, dogMatches});
+						      	    this.setState({userMatches, dogMatches}, ()=>{console.log(dogMatches);});
 						        }
 						      })
 						      .catch(err => console.log(err));
@@ -47,12 +46,29 @@ class Discover extends Component {
 	      .catch(err => console.log(err));
 	}
 
+	matchBtn = matchId => {
+		let userObj = {userId: this.props.userId, matchId: matchId}
+		API.addMatch(userObj)
+	      .then(res => {
+	      	console.log(res);
+	      	if (res.data) alert("You've got a match!");
+	      })
+	      .catch(err => console.log(err));
+	}
+
     render () {
         return (
-            <div className='flex-container flex-end flex-space'>
-                {this.state.userMatches.map(user => (
-                <p key={user.id}>{user.fname}</p>
-              ))}
+            <div>
+                {this.state && this.state.matches && 
+                	this.state.userMatches.map(user => (
+		                <DiscoverCard
+		                	key={user.id}
+		                	user={user}
+		                	dog={this.state.dogMatches.find(dog => dog.owner_id === user.id)}
+		                	matchBtn={this.matchBtn}
+		                />
+              		))
+                }
             </div>
         )
     }

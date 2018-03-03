@@ -30,4 +30,8 @@ export default {
     return axios.get(`/api/matches/${userData.userId}`);
   },
 
+  addMatch: function(matchData) {
+    return axios.post("/api/matchlist", matchData);
+  },
+
 };

@@ -102,8 +102,20 @@ module.exports = (app, passport)=>{
 			   attributes: ['id']
 			}).then(ids => {res.json(ids);
        		});
-       });
-   });
+        });
+    });
+
+	app.post('/api/matchlist', (req, res)=> {
+		db.MatchList.create({ 
+			user_id: req.body.userId,
+			match: req.body.matchId
+		})
+			.then(() => { db.MatchList.findOne({ where: { user_id: req.body.matchId, match: req.body.userId } })
+				.then(match => { res.json(match ? true : false);
+			});
+		});
+	});
+
 };
 
 
