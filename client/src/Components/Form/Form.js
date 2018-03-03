@@ -20,8 +20,8 @@ class Form extends Component {
     }
 
     componentDidMount() {
-        let userObj = {userId: this.props.userId};
-        if (userObj.userId) this.props.history.push('/profile');
+        if (this.props.userId && !this.props.modal) this.props.history.push('/profile');
+        else if (this.props.userId && this.props.modal) this.setState({userId: this.props.userId, modal: true});
       }
 
     handleUserInput = (e) => {
