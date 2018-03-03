@@ -46,6 +46,7 @@ module.exports = (app, passport)=>{
                 city: req.body.city,
                 state: req.body.state,
                 zip: req.body.zip,
+                image: req.body.image,
                 owner_profile: req.body.owner_profile
             }).then(updatedUser =>{
                 db.Dog.create({

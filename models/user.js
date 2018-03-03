@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     owner_profile: {type: DataTypes.STRING,
         allowNull: true
     }, 
-    matches: {type: DataTypes.STRING,
+    image: {type: DataTypes.STRING,
         allowNull: true
     }, 
     createdAt: DataTypes.DATE,
