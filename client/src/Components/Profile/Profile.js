@@ -11,14 +11,15 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-  	let userObj = {userId: this.props.match.params.userId}
+  	let userObj = {userId: this.props.userId}
+  	console.log(this.props.match);
   	API.getUser(userObj)
       .then(res => this.setState({ user: res.data.user, dog: res.data.dog }, ()=>{console.log(res);}))
       .catch(err => console.log(err));
   }
 
   matchButton = () => {
-  	this.props.history.push(`/discover/${this.props.match.params.userId}`)
+  	this.props.history.push('/discover')
   }
 
   render() {
