@@ -15,7 +15,13 @@ class Profile extends Component {
   	if (!userObj.userId) this.props.history.push('/');
   	console.log(this.props.match);
   	API.getUser(userObj)
-      .then(res => this.setState({ user: res.data.user, dog: res.data.dog }, ()=>{console.log(res);}))
+      .then(res => {
+      	if (!res.data.dog) {
+      	    this.props.finishForm();
+      	    this.props.history.push('/');
+        }
+      	this.setState({ user: res.data.user, dog: res.data.dog }, ()=>{console.log(res);})
+      })
       .catch(err => console.log(err));
   }
 

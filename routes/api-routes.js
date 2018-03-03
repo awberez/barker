@@ -1,6 +1,11 @@
 // Requiring our models
 const db = require("../models"), bcrypt = require ("bcrypt"), Sequelize = require('sequelize'), Op = Sequelize.Op;
 
+//// Google Maps API for User matches
+ const googleMapsClient = require('@google/maps').createClient({
+    key: 'your API key here'
+  });
+
 module.exports = (app, passport)=>{
 	app.post('/api/login', (req, res)=>{
         db.User.findOne({where: {user_login : req.body.user_login}
@@ -30,13 +35,22 @@ module.exports = (app, passport)=>{
 		            db.User.create({user_login: user_login, user_passwd: hash})
 		            .then(newUser => {
 		                res.json(newUser);
-		            })   
+		            })  
 		        })
 		    }
 	    });
     });
 
     app.post('/api/newuser', (req, res)=>{
+        let geocode= [];
+        googleMapsClient.geocode({
+            address: req.body.addr1 + ',' + req.body.city + ', ' + req.body.state
+          }, function(err, response) {
+            if (!err) {
+              console.log(response.json.results);
+              geocode = response.json.results
+            }
+          });
         db.User.findOne({where: {id: req.body.userId}
         }).then((dbuser)=>{
             dbuser.update({
@@ -46,6 +60,7 @@ module.exports = (app, passport)=>{
                 city: req.body.city,
                 state: req.body.state,
                 zip: req.body.zip,
+                geoLocat: geocode,
                 owner_profile: req.body.owner_profile
             }).then(updatedUser =>{
                 db.Dog.create({
@@ -86,6 +101,36 @@ module.exports = (app, passport)=>{
 			});
 		});
 	});
+
+	app.get('/api/matches/:id', (req, res)=>{
+       db.User.findOne({
+			where: {
+			   id: req.params.id
+			}
+			}).then(user => {db.User.findAll({
+			   where: {
+			       city: user.city,
+			       id: {
+			           [Op.ne]: req.params.id
+			       }
+			   },
+			   attributes: ['id']
+			}).then(ids => {res.json(ids);
+       		});
+        });
+    });
+
+	app.post('/api/matchlist', (req, res)=> {
+		db.MatchList.create({ 
+			user_id: req.body.userId,
+			match: req.body.matchId
+		})
+			.then(() => { db.MatchList.findOne({ where: { user_id: req.body.matchId, match: req.body.userId } })
+				.then(match => { res.json(match ? true : false);
+			});
+		});
+	});
+
 };
 
 
