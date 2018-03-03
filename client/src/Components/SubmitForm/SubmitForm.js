@@ -41,7 +41,7 @@ class SubmitForm extends React.Component {
         return (
             <div>
                 <div className={containerClass}>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div className='modal-header'>
                             <p>Sign Up</p>
                         </div>
@@ -124,7 +124,7 @@ class SubmitForm extends React.Component {
                                         name="zip"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.zip}
                                     />
                                 </fieldset>
@@ -143,7 +143,7 @@ class SubmitForm extends React.Component {
                                         name="owner_profile"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.owner_profile}
                                     />
                                 </fieldset>
@@ -157,7 +157,7 @@ class SubmitForm extends React.Component {
                                         name="dog_name"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.dog_name}
                                     />
                                 </fieldset>
@@ -169,7 +169,7 @@ class SubmitForm extends React.Component {
                                         name="breed"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.breed}
                                     />
                                 </fieldset>
@@ -184,19 +184,19 @@ class SubmitForm extends React.Component {
                                         name="sex"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.sex}
                                     />
                                 </fieldset>
 
                                 <fieldset className="form-group">
-                                    <p>Dog Age:</p>
+                                    <p>Dog Age (years):</p>
                                     <input
                                         className="form-input"
                                         name="age"
-                                        type="text"
+                                        type="number"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.age}
                                     />
                                 </fieldset>
@@ -211,7 +211,7 @@ class SubmitForm extends React.Component {
                                         name="demeanor"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.demeanor}
                                     />
                                 </fieldset>
@@ -223,7 +223,7 @@ class SubmitForm extends React.Component {
                                         name="size"
                                         type="text"
                                         required
-                                        onChange={this.handleChange}
+                                        onChange={this.handleUserInput}
                                         value={this.state.size}
                                     />
                                 </fieldset>
@@ -232,7 +232,7 @@ class SubmitForm extends React.Component {
 
                         </div>
                         <div className='modal-footer'></div>
-                        <button type="submit" onClick={this.handleSubmit}>Sign Up</button>
+                        <button type="submit">Sign Up</button>
                     </form>
                 </div>
             </div>

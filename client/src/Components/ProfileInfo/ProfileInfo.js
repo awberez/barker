@@ -17,10 +17,23 @@ class ProfileInfo extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log(event.target.id);
-    let userObj = {userId: this.props.id, [this.props.val]: this.state.newData};
-    API.updateUser(userObj)
-      .then(res => this.setState({ data: this.state.newData, editing: false }))
-      .catch(err => console.log(err));
+    let userObj = {userId: this.props.id, val: this.props.val, data: this.state.newData};
+    if (this.props.table === "user") {
+      API.updateUser(userObj)
+        .then(res => {
+          console.log(res);
+          this.setState({ data: this.state.newData, editing: false });
+        })
+        .catch(err => console.log(err));
+    }
+    else {
+      API.updateDog(userObj)
+        .then(res => {
+          console.log(res);
+          this.setState({ data: this.state.newData, editing: false });
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   button = (bool) => {

@@ -1,10 +1,9 @@
 // Requiring our models
-var db = require("../models");
-var bcrypt = require ("bcrypt");
+const db = require("../models"), bcrypt = require ("bcrypt"), Sequelize = require('sequelize'), Op = Sequelize.Op;
 
 module.exports = (app, passport)=>{
 	app.post('/api/login', (req, res)=>{
-        db.user.findOne({where: {user_login : req.body.user_login}
+        db.User.findOne({where: {user_login : req.body.user_login}
         }).then((user)=>{
             bcrypt.compare(req.body.user_passwd, user.user_passwd, (err, loginSuccess)=>{
                if (loginSuccess){ 
@@ -20,7 +19,7 @@ module.exports = (app, passport)=>{
     });
 
 	app.post('/api/signup', (req, res)=>{
-		db.user.findOne({where: {user_login : req.body.user_login}
+		db.User.findOne({where: {user_login : req.body.user_login}
         }).then((user)=>{
         	if (user) res.json(false);
         	else {
@@ -28,7 +27,7 @@ module.exports = (app, passport)=>{
 		        console.log(req.body);
 		        bcrypt.hash(user_passwd, 10, (err, hash)=>{
 		            console.log(hash);
-		            db.user.create({user_login: user_login, user_passwd: hash})
+		            db.User.create({user_login: user_login, user_passwd: hash})
 		            .then(newUser => {
 		                res.json(newUser);
 		            })   
@@ -38,7 +37,7 @@ module.exports = (app, passport)=>{
     });
 
     app.post('/api/newuser', (req, res)=>{
-        db.user.findOne({where: {id: req.body.userId}
+        db.User.findOne({where: {id: req.body.userId}
         }).then((dbuser)=>{
             dbuser.update({
                 fname: req.body.fname,
@@ -49,8 +48,8 @@ module.exports = (app, passport)=>{
                 zip: req.body.zip,
                 owner_profile: req.body.owner_profile
             }).then(updatedUser =>{
-                db.dog.create({
-                    owner_id: req.body.id,
+                db.Dog.create({
+                    owner_id: updatedUser.id,
                     dog_name: req.body.dog_name,
                     breed: req.body.breed,
                     sex: req.body.sex,
@@ -64,31 +63,35 @@ module.exports = (app, passport)=>{
         })            
     });
 
-	app.get('/api/profile', isLoggedIn, (req, res)=>{
-		res.render('profile.ejs', { user: req.user });
-	});
-
-	app.get('/api/:username/:password', (req, res)=>{
-		var newUser = new User();
-		newUser.local.username = req.params.username;
-		newUser.local.password = req.params.password;
-		console.log(newUser.local.username + " " + newUser.local.password);
-		newUser.save((err)=>{
-			if(err)
-				throw err;
+	app.get('/api/profile/:id', (req, res)=>{
+		db.User.findOne({ where: { id: req.params.id } })
+			.then(dbUser => { db.Dog.findOne({ where: { owner_id: dbUser.id } }) 
+				.then(dbDog => { res.json({user: dbUser, dog: dbDog}); 
+			});
 		});
-		res.send("Success!");
 	});
 
-	app.get('/api/logout', (req, res)=>{
-		req.logout();
-		res.redirect('/');
-	})
+	app.post('/api/updateuser', (req, res)=> {
+		db.User.findOne({ where: { id: req.body.userId } })
+			.then(dbUser => { dbUser.update({ [req.body.val]: req.body.data })
+				.then(user => { res.json(user);
+			});
+		});
+	});
+
+	app.post('/api/updatedog', (req, res)=> {
+		db.Dog.findOne({ where: { owner_id: req.body.userId } })
+			.then(dbDog => { dbDog.update({ [req.body.val]: req.body.data })
+				.then(dog => { res.json(dog);
+			});
+		});
+	});
 };
 
- const isLoggedIn = (req, res, next)=> {
-	if(req.isAuthenticated()){
-		return next();
-	} 
-	res.redirect('/api/login');
-} 
+
+
+
+
+
+
+

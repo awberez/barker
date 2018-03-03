@@ -22,14 +22,8 @@ id: {type: DataTypes.INTEGER,
     age: {type: DataTypes.INTEGER, 
         allowNull: false
     },
-    dog_weight: {type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     demeanor: {type: DataTypes.STRING,
         allowNull: false
-    },
-    energylvl: {type: DataTypes.STRING,
-        allowNull:false
     },
     size: {type: DataTypes.STRING, /* sm, md, lg, xl */
         allowNull: false
