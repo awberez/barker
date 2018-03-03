@@ -121,8 +121,8 @@ class Form extends Component {
                         <div className="panel panel-default">
                             <FormErrors formErrors={this.state.formErrors} />
                         </div>
-                        <div className={`input-size form-group ${this.errorClass(this.state.formErrors.email)}`}>
-                            <label htmlFor="email">Email address</label>
+                        <div className={`input-size form-group auto pad-top-20 ${this.errorClass(this.state.formErrors.email)}`}>
+                            <label className='text-sml' htmlFor="email">Email address:</label>
                             <input type="email" required className="form-control" name="email"
                                    placeholder="Email"
                                    value={this.state.email}
@@ -130,37 +130,41 @@ class Form extends Component {
                         </div>
                         {this.state.signup
                           ? <React.Fragment>
-                                <div className={`input-size form-group ${this.errorClass(this.state.formErrors.password)}`}>
-                                    <label htmlFor="password">Password</label>
+                                <div className={`input-size form-group auto ${this.errorClass(this.state.formErrors.password)}`}>
+                                    <label className='text-sml' htmlFor="password">Password:</label>
                                     <input type="password" className="form-control" name="password"
                                            placeholder="Password"
                                            value={this.state.password}
                                            onChange={this.handleUserInput}  />
                                 </div>
-                                <div className={`input-size form-group ${this.errorClass(this.state.formErrors.passwordTwo)}`}>
-                                    <label htmlFor="password">Confirm Password</label>
+                                <div className={`input-size form-group auto ${this.errorClass(this.state.formErrors.passwordTwo)}`}>
+                                    <label className='text-sml' htmlFor="password">Confirm Password:</label>
                                     <input type="password" className="form-control" name="passwordTwo"
                                            placeholder="Password"
                                            value={this.state.passwordTwo}
                                            onChange={this.handleUserInput}  />
                                 </div>
-                                <button type="submit" className="button" disabled={!this.state.formValid}>Sign up</button>
-                                <span onClick={this.toggleState}>
-                                    <p>Already have an account?<br/>Click here to log in.</p>
-                                </span>
+                                <div className='pad-top-20'>
+                                    <button type="submit" className="button" disabled={!this.state.formValid}>Sign up</button>
+                                    <span onClick={this.toggleState}>
+                                        <p>Already have an account?<br/>Click here to log in.</p>
+                                    </span>
+                                </div>
                             </React.Fragment>
                           : <React.Fragment>
-                                <div className={`input-size form-group ${this.errorClass(this.state.formErrors.password)}`}>
+                                <div className={`input-size form-group auto ${this.errorClass(this.state.formErrors.password)}`}>
                                     <label htmlFor="password">Password</label>
                                     <input type="password" className="form-control" name="password"
                                            placeholder="Password"
                                            value={this.state.password}
                                            onChange={this.handleUserInput}  />
                                 </div>
-                                <button type="submit" className="button" disabled={!this.state.formValid}>Log In</button>
-                                <span onClick={this.toggleState}>
-                                    <p>Don't have an account yet?<br/>Click here to sign up.</p>
-                                </span>
+                                <div className='pad-top-20'>
+                                    <button type="submit" className="button" disabled={!this.state.formValid}>Log In</button>
+                                    <span onClick={this.toggleState}>
+                                        <p>Don't have an account yet?<br/>Click here to sign up.</p>
+                                    </span>
+                                </div>
                             </React.Fragment>
                         }
                     </form>

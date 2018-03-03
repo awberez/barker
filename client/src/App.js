@@ -41,7 +41,6 @@ class App extends Component {
             <Router>
                 <div>
                     <Header>
-                        <h1>Dog "Tinder"</h1>
                         { this.state && this.state.userId &&
                             <button className="logout-btn" onClick={this.logOut}>Log Out</button>
                         }

@@ -5,9 +5,17 @@
     border-radius: 4px;
 }
 
+.group {
+    padding: 15px;
+}
+
 .btn-primary {
     color: white;
     background-color: #6B7A8F;
+}
+
+.text-sml {
+    font-size: .8rem;
 }
 
 .btn-primary:hover {
@@ -15,9 +23,15 @@
 }
 
 .modal-header {
-    color: white;
+    color: #F7C331;
     display: flex;
     justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 3rem;
+    text-shadow: 2px 2px #a17908;
+    border-bottom: none;
+    text-transform: uppercase;
+
 }
 
 .modal-cover {
@@ -63,4 +77,12 @@
     display: flex;
 }
 
+.flex-center {
+    justify-content: center;
+}
 
+
+.modal-footer {
+    padding: .5rem;
+    border-top: none;
+}

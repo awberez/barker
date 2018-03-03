@@ -43,10 +43,10 @@ class SubmitForm extends React.Component {
                 <div className={containerClass}>
                     <form onSubmit={this.handleSubmit}>
                         <div className='modal-header'>
-                            <p>Please Enter Your Information</p>
+                            <p>~ Please Enter Your Information ~</p>
                         </div>
                         
-                        <div className='modal-body flex'>
+                        <div className='modal-body flex flex-center'>
 
                             <div className='group'>
 
@@ -89,7 +89,7 @@ class SubmitForm extends React.Component {
 
                             </div>
 
-                            <div>
+                            <div className='group'>
 
 
                                 <fieldset className="form-group">
@@ -110,7 +110,7 @@ class SubmitForm extends React.Component {
                                     <input
                                         className="form-input"
                                         name="state"
-                                        type="text"
+                                        type="select"
                                         required
                                         onChange={this.handleUserInput}
                                         value={this.state.state}
@@ -132,7 +132,7 @@ class SubmitForm extends React.Component {
 
                             </div>
 
-                            <div>
+                            <div className='group'>
 
 
 
@@ -174,7 +174,7 @@ class SubmitForm extends React.Component {
 
                             </div>
 
-                            <div>
+                            <div className='group'>
 
                                 <fieldset className="form-group">
                                     <p>Dog Gender:</p>
@@ -214,26 +214,24 @@ class SubmitForm extends React.Component {
 
                             </div>
 
-                            <div>
-
-
+                            <div className='group'>
                                 <fieldset className="form-group">
-                                    <p>Dog Size:</p>
-                                    <input
-                                        className="form-input"
-                                        name="size"
-                                        type="text"
-                                        required
-                                        onChange={this.handleUserInput}
-                                        value={this.state.size}
-                                    />
-                                </fieldset>
+                                <p>Dog Size:</p>
+                                <input
+                                    className="form-input"
+                                    name="size"
+                                    type="text"
+                                    required
+                                    onChange={this.handleUserInput}
+                                    value={this.state.size}
+                                />
+                            </fieldset>
 
                             </div>
 
                         </div>
                         <div className='modal-footer'></div>
-                        <button type="submit">Sign Up</button>
+                        <button className='sub-button' type="submit">Sign Up</button>
                     </form>
                 </div>
             </div>
