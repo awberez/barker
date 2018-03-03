@@ -16,7 +16,7 @@ class ProfileInfo extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(event.target.id);
+    console.log(event.target.id + "click");
     let userObj = {userId: this.props.id, val: this.props.val, data: this.state.newData};
     if (this.props.table === "user") {
       API.updateUser(userObj)

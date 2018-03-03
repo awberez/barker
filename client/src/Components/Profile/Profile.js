@@ -34,7 +34,7 @@ class Profile extends Component {
 		      		<ProfileInfo
 						title={"First Name"}
 						val={"fname"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"text"}
 						data={this.state.user.fname}
 						table={"user"}
@@ -42,7 +42,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"Last Name"}
 						val={"lname"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"text"}
 						data={this.state.user.lname}
 						table={"user"}
@@ -50,7 +50,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"Address"}
 						val={"addr1"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"text"}
 						data={this.state.user.addr1}
 						table={"user"}
@@ -58,7 +58,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"City"}
 						val={"city"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"text"}
 						data={this.state.user.city}
 						table={"user"}
@@ -66,7 +66,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"State"}
 						val={"state"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"text"}
 						data={this.state.user.state}
 						table={"user"}
@@ -74,7 +74,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"ZIP"}
 						val={"zip"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"number"}
 						data={this.state.user.zip}
 						table={"user"}
@@ -82,7 +82,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"About Me"}
 						val={"owner_profile"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"textarea"}
 						data={this.state.user.owner_profile}
 						table={"user"}
@@ -92,7 +92,7 @@ class Profile extends Component {
 		      	 	<ProfileInfo
 						title={"Dog Name"}
 						val={"dog_name"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"text"}
 						data={this.state.dog.dog_name}
 						table={"dog"}
@@ -100,7 +100,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"Breed"}
 						val={"breed"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"text"}
 						data={this.state.dog.breed}
 						table={"dog"}
@@ -108,7 +108,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"Sex"}
 						val={"sex"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"radio"}
 						data={this.state.dog.sex}
 						table={"dog"}
@@ -116,7 +116,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"Age (years)"}
 						val={"age"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"number"}
 						data={this.state.dog.age}
 						table={"dog"}
@@ -124,7 +124,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"Demeanor"}
 						val={"demeanor"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"number"}
 						data={this.state.dog.demeanor}
 						table={"dog"}
@@ -132,7 +132,7 @@ class Profile extends Component {
 			        <ProfileInfo
 						title={"Size"}
 						val={"size"}
-						id={this.props.match.params.userId}
+						id={this.props.userId}
 						type={"radio"}
 						data={this.state.dog.size}
 						table={"dog"}
