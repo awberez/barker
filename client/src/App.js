@@ -15,14 +15,26 @@ class App extends Component {
 
     handler(id) {
         this.setState({ userId: id });
+        localStorage.setItem("userId", id);
         console.log(this.state.userId);
       }
+
+    componentWillMount() {
+        let userId = localStorage.getItem("userId");
+        if (userId) this.setState({ userId })
+      }
+
+    logOut = () => {
+        this.setState({ userId: '' });
+        localStorage.setItem("userId", '');
+        window.location.reload();
+    }
 
     render() {
         return (
             <Router>
                 <div>
-                    <Header><h1>Dog "Tinder"</h1></Header>
+                    <Header><h1>Dog "Tinder"</h1><button className="logout-btn" onClick={this.logOut}>Log Out</button></Header>
                     <Switch>
                         <Route exact path="/" render={props => <Form {...props} handler = {this.handler} />} />
                         <Route path="/profile" render={props => <Profile {...props} userId = {this.state.userId} />} />
