@@ -43,7 +43,7 @@ class SubmitForm extends React.Component {
                 <div className={containerClass}>
                     <form onSubmit={this.handleSubmit}>
                         <div className='modal-header'>
-                            <p>Sign Up</p>
+                            <p>Please Enter Your Information</p>
                         </div>
                         
                         <div className='modal-body flex'>
