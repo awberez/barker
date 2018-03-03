@@ -36,11 +36,10 @@ module.exports = (sequelize, DataTypes) => {
     zip: {type: DataTypes.STRING(10),
         allowNull: true
     },
-    geoLocat:{
-        type: DataTypes.Point,
-        allowNull: true
-    },
     owner_profile: {type: DataTypes.STRING,
+        allowNull: true
+    }, 
+    matches: {type: DataTypes.STRING,
         allowNull: true
     }, 
     createdAt: DataTypes.DATE,
