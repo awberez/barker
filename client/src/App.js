@@ -9,6 +9,9 @@ import Discover from "./Components/Discover";
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            modal: false
+        }
         this.handler = this.handler.bind(this);
       }
 
@@ -22,6 +25,10 @@ class App extends Component {
         let userId = localStorage.getItem("userId");
         this.setState({ userId: userId ? userId : false })
       }
+
+    finishForm = () => {
+        this.setState({ modal: true });
+    }
 
     logOut = () => {
         this.setState({ userId: '' });
@@ -40,9 +47,9 @@ class App extends Component {
                         }
                     </Header>
                     <Switch>
-                        <Route exact path="/" render={props => <Form {...props} userId = {this.state.userId} handler = {this.handler} />} />
-                        <Route path="/profile" render={props => <Profile {...props} userId = {this.state.userId} />} />
-                        <Route path="/discover" render={props => <Discover {...props} userId = {this.state.userId} />} />
+                        <Route exact path="/" render={props => <Form {...props} modal={this.state.modal} userId={this.state.userId} handler={this.handler} />} />
+                        <Route path="/profile" render={props => <Profile {...props} finishForm={this.finishForm} userId={this.state.userId} />} />
+                        <Route path="/discover" render={props => <Discover {...props} finishForm={this.finishForm} userId={this.state.userId} />} />
                     </Switch>
                 </div>
             </Router>
