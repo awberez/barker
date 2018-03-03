@@ -17,8 +17,8 @@ class SubmitForm extends React.Component {
         sex: "",
         age: "",
         size: "",
-        demeanor: ""
-    }
+        demeanor: "",
+}
 
     handleUserInput = (e) => {
         const name = e.target.name;
@@ -48,7 +48,7 @@ class SubmitForm extends React.Component {
                         
                         <div className='modal-body flex'>
 
-                            <div>
+                            <div className='group'>
 
                                 <fieldset className="form-group">
                                     <p>First Name:</p>
@@ -60,6 +60,8 @@ class SubmitForm extends React.Component {
                                         onChange={this.handleUserInput}
                                         value={this.state.fname}
                                     />
+                                    <span className='highlight'></span>
+                                    <span className='bar'></span>
                                 </fieldset>
 
                                 <fieldset className="form-group">
@@ -147,8 +149,6 @@ class SubmitForm extends React.Component {
                                         value={this.state.owner_profile}
                                     />
                                 </fieldset>
-                            </div>
-                            <div>
 
                                 <fieldset className="form-group">
                                     <p>Dog Name:</p>
@@ -175,6 +175,7 @@ class SubmitForm extends React.Component {
                                 </fieldset>
 
                             </div>
+
                             <div>
 
                                 <fieldset className="form-group">
@@ -201,9 +202,6 @@ class SubmitForm extends React.Component {
                                     />
                                 </fieldset>
 
-                            </div>
-
-                            <div>
                                 <fieldset className="form-group">
                                     <p>Demeanor:</p>
                                     <input
@@ -215,6 +213,11 @@ class SubmitForm extends React.Component {
                                         value={this.state.demeanor}
                                     />
                                 </fieldset>
+
+                            </div>
+
+                            <div>
+
 
                                 <fieldset className="form-group">
                                     <p>Dog Size:</p>
