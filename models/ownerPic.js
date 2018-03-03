@@ -1,5 +1,6 @@
-module.exports = (sequelize, DataTypes)=>{}
-const picOwner = sequelize.define('user', {
+
+module.exports = (sequelize, DataTypes)=>{
+const picOwner = sequelize.define('picOwner', {
     id: {type: Sequelized.INTEGER,
         allowNull: false,
         autoIncrement: true,
@@ -16,4 +17,9 @@ const picOwner = sequelize.define('user', {
     },/*  -- for future use to store CDN reference */
     pic: {type: Sequelized.BLOB
     }, /* -- pic storage in database */
-})
+
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
+});
+return picOwner
+}
