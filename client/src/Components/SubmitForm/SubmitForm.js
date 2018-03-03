@@ -60,8 +60,6 @@ class SubmitForm extends React.Component {
                                         onChange={this.handleUserInput}
                                         value={this.state.fname}
                                     />
-                                    <span className='highlight'></span>
-                                    <span className='bar'></span>
                                 </fieldset>
 
                                 <fieldset className="form-group">
