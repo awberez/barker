@@ -51,7 +51,7 @@ class Discover extends Component {
 		API.addMatch(userObj)
 	      .then(res => {
 	      	console.log(res);
-	      	if (res.data) alert("You've got a match!");
+	      	alert(res.data ? "You've got a match!" : "Fingers crossed!");
 	      })
 	      .catch(err => console.log(err));
 	}

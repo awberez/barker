@@ -106,13 +106,23 @@ module.exports = (app, passport)=>{
     });
 
 	app.post('/api/matchlist', (req, res)=> {
-		db.MatchList.create({ 
-			user_id: req.body.userId,
-			match: req.body.matchId
-		})
-			.then(() => { db.MatchList.findOne({ where: { user_id: req.body.matchId, match: req.body.userId } })
-				.then(match => { res.json(match ? true : false);
-			});
+		db.MatchList.findOne({ where: { user_id: req.body.userId, match: req.body.matchId } })
+		.then(alreadyMatched => {
+			if (!alreadyMatched) {
+				db.MatchList.create({ 
+					user_id: req.body.userId,
+					match: req.body.matchId
+				})
+					.then(() => { db.MatchList.findOne({ where: { user_id: req.body.matchId, match: req.body.userId } })
+						.then(match => { res.json(match ? true : false);
+					});
+				});
+			}
+			else {
+				db.MatchList.findOne({ where: { user_id: req.body.matchId, match: req.body.userId } })
+						.then(match => { res.json(match ? true : false);
+					});
+			}
 		});
 	});
 
