@@ -23,9 +23,11 @@ class Discover extends Component {
 	        else {
 	        	API.findMatches(userObj)
 			      .then(res => {
-			      	this.setState({ matches: res.data.matches }, ()=>{
+			      	this.setState({ matches: res.data }, ()=>{
+			      		console.log(res);
 			      		this.state.matches.forEach(id => {
-			      			let userObj = {userId: id};
+			      			console.log(id);
+			      			let userObj = {userId: id.id};
 			      			API.getUser(userObj)
 						      .then(res => {
 						      	if (res.data.dog) {
@@ -49,7 +51,7 @@ class Discover extends Component {
         return (
             <div className='flex-container flex-end flex-space'>
                 {this.state.userMatches.map(user => (
-                <p>{user.fname}</p>
+                <p key={user.id}>{user.fname}</p>
               ))}
             </div>
         )
