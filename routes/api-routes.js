@@ -1,11 +1,6 @@
 // Requiring our models
 const db = require("../models"), bcrypt = require ("bcrypt"), Sequelize = require('sequelize'), Op = Sequelize.Op;
 
-//// Google Maps API for User matches
- const googleMapsClient = require('@google/maps').createClient({
-    key: 'your API key here'
-  });
-
 module.exports = (app, passport)=>{
 	app.post('/api/login', (req, res)=>{
         db.User.findOne({where: {user_login : req.body.user_login}
@@ -42,15 +37,6 @@ module.exports = (app, passport)=>{
     });
 
     app.post('/api/newuser', (req, res)=>{
-        let geocode= [];
-        googleMapsClient.geocode({
-            address: req.body.addr1 + ',' + req.body.city + ', ' + req.body.state
-          }, function(err, response) {
-            if (!err) {
-              console.log(response.json.results);
-              geocode = response.json.results
-            }
-          });
         db.User.findOne({where: {id: req.body.userId}
         }).then((dbuser)=>{
             dbuser.update({
@@ -60,7 +46,6 @@ module.exports = (app, passport)=>{
                 city: req.body.city,
                 state: req.body.state,
                 zip: req.body.zip,
-                geoLocat: geocode,
                 owner_profile: req.body.owner_profile
             }).then(updatedUser =>{
                 db.Dog.create({
