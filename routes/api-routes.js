@@ -41,7 +41,7 @@ module.exports = (app, passport)=>{
     });
 
     app.post('/api/newuser', (req, res)=>{
-        let geoLocat= [], address = req.body.addr1 + ', ' + req.body.city + ', ' + req.body.state;
+        let geoLocat, address = req.body.addr1 + ', ' + req.body.city + ', ' + req.body.state;
         googleMapsClient.geocode({address: address}).asPromise()
 	        .then((response)=>{
 	            console.log(response.json.results[0].geometry.location);
@@ -142,7 +142,6 @@ module.exports = (app, passport)=>{
 			}
 			}).then(user => {db.User.findAll({
 			   where: {
-			       city: user.city,
 			       id: {
 			           [Op.ne]: req.params.id
 			       }
