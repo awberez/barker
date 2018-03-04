@@ -127,6 +127,11 @@ module.exports = (app, passport)=>{
 		});
 	});
 
+	app.post('/api/matchcheck', (req, res)=> {
+		db.MatchList.findOne({ where: { user_id: req.body.userId, match: req.body.matchId } })
+		.then(match => { res.json(match ? true : false); });
+	});
+
 };
 
 

@@ -30,6 +30,10 @@ export default {
     return axios.get(`/api/matches/${userData.userId}`);
   },
 
+  checkMatch: function(matchData) {
+    return axios.post("/api/matchcheck", matchData);
+  },
+
   addMatch: function(matchData) {
     return axios.post("/api/matchlist", matchData);
   },
