@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true
     },
     geoLocat:{
-        type: DataTypes.Point,
+        type: DataTypes.GEOMETRY,
         allowNull: true
     },
     owner_profile: {type: DataTypes.STRING,

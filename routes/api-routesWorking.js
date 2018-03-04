@@ -1,9 +1,5 @@
 // Requiring our models
 const db = require("../models"), bcrypt = require ("bcrypt"), Sequelize = require('sequelize'), Op = Sequelize.Op;
-var googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyD3M0WR0Z9a1lnWBnz6Fx3F-iaBTDYCJjo',
-    Promise: Promise
-  });
 
 module.exports = (app, passport)=>{
 	app.post('/api/login', (req, res)=>{
@@ -42,49 +38,29 @@ module.exports = (app, passport)=>{
 
     app.post('/api/newuser', (req, res)=>{
         db.User.findOne({where: {id: req.body.userId}
-        })
-        .then((geo)=>{
-            let geoLocat= [];
-            googleMapsClient.geocode({address: req.body.addr1 +', '+ req.body.city + ', ' + req.body.state
-                }).asPromise().then((response)=>{
-                        console.log(response.json.results[0].geometry.location);
-                        geocode = response.json.results[0].geometry.location;
-                        geoLocat = [geocode.lat, geocode.lng]
-                        console.log('\n\n\n\n\n\n\n\n\n\n\n');
-                        console.log(geoLocat);
-                        
-                    })
-                    .catch((err)=>{
-                        console.log(err)
-                    })
-                    .then((dbuser)=>{
-                        dbuser.update({
-                            fname: req.body.fname,
-                            lname: req.body.lname,
-                            addr1: req.body.addr1,
-                            city: req.body.city,
-                            state: req.body.state,
-                            zip: req.body.zip,
-                            geoLocat: geoLocat,
-                            image: req.body.image,
-                            owner_profile: req.body.owner_profile
-                        })   
-                    })
-                    .then((updatedUser) =>{
-                        db.Dog.create({
-                            owner_id: updatedUser.id,
-                            dog_name: req.body.dog_name,
-                            breed: req.body.breed,
-                            sex: req.body.sex,
-                            age: req.body.age,
-                            demeanor: req.body.demeanor,
-                            size: req.body.size
-                        })
-                    })    
-                    .then(() => {
-                        res.json(updatedUser)
-                    })
-                
+        }).then((dbuser)=>{
+            dbuser.update({
+                fname: req.body.fname,
+                lname: req.body.lname,
+                addr1: req.body.addr1,
+                city: req.body.city,
+                state: req.body.state,
+                zip: req.body.zip,
+                image: req.body.image,
+                owner_profile: req.body.owner_profile
+            }).then(updatedUser =>{
+                db.Dog.create({
+                    owner_id: updatedUser.id,
+                    dog_name: req.body.dog_name,
+                    breed: req.body.breed,
+                    sex: req.body.sex,
+                    age: req.body.age,
+                    demeanor: req.body.demeanor,
+                    size: req.body.size
+                }).then(() => {
+                    res.json(updatedUser);
+                })
+            })
         })            
     });
 
@@ -152,13 +128,3 @@ module.exports = (app, passport)=>{
 	});
 
 };
-
-
-
-
-
-
-
-
-
-
