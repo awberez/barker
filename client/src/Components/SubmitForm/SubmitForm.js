@@ -35,7 +35,10 @@ class SubmitForm extends React.Component {
             userObj.userId = this.props.userId;
             console.log(userObj);
             API.createUser(userObj)
-              .then(res => this.props.history.push("/profile"))
+              .then(res => {
+                console.log(res);
+                this.props.history.push("/profile");
+               })
               .catch(err => console.log(err));
         }
         else alert("Don't forget a profile image!");
