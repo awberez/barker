@@ -1,7 +1,12 @@
 .userInfo {
-	float: left;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
 }
 
 .dogInfo {
-	float: right;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }

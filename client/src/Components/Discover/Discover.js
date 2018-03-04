@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import DiscoverCard from "../DiscoverCard";
+import Header from "../Header";
 import './Discover.css';
 
 class Discover extends Component {
@@ -46,29 +47,27 @@ class Discover extends Component {
 	      .catch(err => console.log(err));
 	}
 
-	matchBtn = matchId => {
-		let userObj = {userId: this.props.userId, matchId: matchId}
-		API.addMatch(userObj)
-	      .then(res => {
-	      	console.log(res);
-	      	if (res.data) alert("You've got a match!");
-	      })
-	      .catch(err => console.log(err));
+	profileButton = () => {
+	  	this.props.history.push('/profile')
 	}
 
     render () {
         return (
             <div>
-                {this.state && this.state.matches && 
-                	this.state.userMatches.map(user => (
-		                <DiscoverCard
-		                	key={user.id}
-		                	user={user}
-		                	dog={this.state.dogMatches.find(dog => dog.owner_id === user.id)}
-		                	matchBtn={this.matchBtn}
-		                />
-              		))
-                }
+            	<button className="button" onClick={this.profileButton}>Edit My Profile!</button>
+            	<Header><h3>Potential Matches</h3></Header>
+            	<div className="wrapper">
+	                {this.state && this.state.matches && 
+	                	this.state.userMatches.map(user => (
+			                <DiscoverCard
+			                	key={user.id}
+			                	user={user}
+			                	userId={this.props.userId}
+			                	dog={this.state.dogMatches.find(dog => dog.owner_id === user.id)}
+			                />
+	              		))
+	                }
+	            </div>
             </div>
         )
     }

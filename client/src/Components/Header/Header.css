@@ -9,11 +9,7 @@
     height: 100px;
     opacity: .8;
     background-color: transparent;
-}
+    /*background-image: url("logo1.png");*/
 
-.logout-btn {
-    position: absolute;
-    right: 20px;
-    top: 10px;
 }
 
