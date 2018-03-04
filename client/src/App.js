@@ -44,7 +44,6 @@ class App extends Component {
             <Router>
                 <div>
                     <Header>
-                        <h1>Dog "Tinder"</h1>
                         { this.state && this.state.userId &&
                             <span className="logout-btn">
                                 <span className="logged-in-as">logged in as {this.state.email}</span>

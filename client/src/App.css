@@ -1,6 +1,9 @@
 body {
     background-image: url("dog1.png");
     background-size: cover;
+    font-size: 18px;
+}
+
 }
 
 .logout-btn {
