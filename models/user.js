@@ -39,6 +39,9 @@ module.exports = (sequelize, DataTypes) => {
     owner_profile: {type: DataTypes.STRING,
         allowNull: true
     }, 
+    image: {type: DataTypes.STRING,
+        allowNull: true
+    }, 
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
     
