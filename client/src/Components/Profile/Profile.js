@@ -22,7 +22,7 @@ class Profile extends Component {
 	      	    this.props.finishForm();
 	      	    this.props.history.push('/');
 	        }
-	      	this.setState({ user: res.data.user, dog: res.data.dog }, ()=>{console.log(res);})
+	      	else this.setState({ user: res.data.user, dog: res.data.dog }, ()=>{console.log(res);})
 	    })
 	    .catch(err => console.log(err));
 	}
