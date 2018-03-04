@@ -7,6 +7,7 @@
     "axios": "^0.18.0",
     "axios-mock-adapter": "^1.14.0",
     "cloudinary-react": "^1.0.6",
+    "geolib": "^2.0.24",
     "react": "^16.2.0",
     "react-body-images": "^1.0.1",
     "react-dom": "^16.2.0",
