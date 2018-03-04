@@ -47,16 +47,6 @@ class Discover extends Component {
 	      .catch(err => console.log(err));
 	}
 
-	matchBtn = matchId => {
-		let userObj = {userId: this.props.userId, matchId: matchId}
-		API.addMatch(userObj)
-	      .then(res => {
-	      	console.log(res);
-	      	alert(res.data ? "You've got a match!" : "Fingers crossed!");
-	      })
-	      .catch(err => console.log(err));
-	}
-
 	profileButton = () => {
 	  	this.props.history.push('/profile')
 	}
@@ -66,16 +56,18 @@ class Discover extends Component {
             <div>
             	<button className="button" onClick={this.profileButton}>Edit My Profile!</button>
             	<Header><h3>Potential Matches</h3></Header>
-                {this.state && this.state.matches && 
-                	this.state.userMatches.map(user => (
-		                <DiscoverCard
-		                	key={user.id}
-		                	user={user}
-		                	dog={this.state.dogMatches.find(dog => dog.owner_id === user.id)}
-		                	matchBtn={this.matchBtn}
-		                />
-              		))
-                }
+            	<div className="wrapper">
+	                {this.state && this.state.matches && 
+	                	this.state.userMatches.map(user => (
+			                <DiscoverCard
+			                	key={user.id}
+			                	user={user}
+			                	userId={this.props.userId}
+			                	dog={this.state.dogMatches.find(dog => dog.owner_id === user.id)}
+			                />
+	              		))
+	                }
+	            </div>
             </div>
         )
     }

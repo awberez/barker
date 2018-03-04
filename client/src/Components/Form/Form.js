@@ -85,7 +85,7 @@ class Form extends Component {
               .then(res => {
                 console.log(res);
                 if (res.data.id) {
-                    this.props.handler(res.data.id);
+                    this.props.handler(res.data.id, res.data.user_login);
                     this.props.history.push("/profile");
                 }
                 else {
@@ -100,7 +100,7 @@ class Form extends Component {
               .then(res => {
                 console.log(res);
                 if (res.data.id) {
-                    this.props.handler(res.data.id);
+                    this.props.handler(res.data.id, res.data.user_login);
                     this.setState({userId: res.data.id, modal: true});
                 }
                 else {
