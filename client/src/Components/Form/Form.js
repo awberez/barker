@@ -125,6 +125,7 @@ class Form extends Component {
                             <label className='text-sml' htmlFor="email">Email address:</label>
                             <input type="email" required className="form-control" name="email"
                                    placeholder="Email"
+                                   required
                                    value={this.state.email}
                                    onChange={this.handleUserInput}  />
                         </div>
@@ -134,6 +135,7 @@ class Form extends Component {
                                     <label className='text-sml' htmlFor="password">Password:</label>
                                     <input type="password" className="form-control" name="password"
                                            placeholder="Password"
+                                           required
                                            value={this.state.password}
                                            onChange={this.handleUserInput}  />
                                 </div>
@@ -141,6 +143,7 @@ class Form extends Component {
                                     <label className='text-sml' htmlFor="password">Confirm Password:</label>
                                     <input type="password" className="form-control" name="passwordTwo"
                                            placeholder="Password"
+                                           required
                                            value={this.state.passwordTwo}
                                            onChange={this.handleUserInput}  />
                                 </div>
@@ -156,6 +159,7 @@ class Form extends Component {
                                     <label htmlFor="password">Password</label>
                                     <input type="password" className="form-control" name="password"
                                            placeholder="Password"
+                                           required
                                            value={this.state.password}
                                            onChange={this.handleUserInput}  />
                                 </div>
