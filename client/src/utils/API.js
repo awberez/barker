@@ -38,4 +38,8 @@ export default {
     return axios.post("/api/matchlist", matchData);
   },
 
+  getBaseBreedsList: function() {
+    return axios.get("https://dog.ceo/api/breeds/list");
+  }
+
 };

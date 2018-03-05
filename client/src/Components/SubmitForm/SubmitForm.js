@@ -19,8 +19,15 @@ class SubmitForm extends React.Component {
         age: "",
         size: "",
         demeanor: "",
-        image: ""
+        image: "",
+        breeds: []
 }
+
+    componentDidMount() {
+        API.getBaseBreedsList()
+          .then(res => this.setState({ breeds: res.data.message }))
+          .catch(err => console.log(err));
+      }
 
     handleUserInput = (e) => {
         const name = e.target.name;
@@ -182,13 +189,18 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Dog Breed:</p>
                                     <input
-                                        className="form-input"
-                                        name="breed"
-                                        type="text"
-                                        required
-                                        onChange={this.handleUserInput}
                                         value={this.state.breed}
+                                        onChange={this.handleUserInput}
+                                        name="breed"
+                                        list="breeds"
+                                        type="text"
+                                        className="form-control"
+                                        placeholder=""
+                                        id="breed"
                                     />
+                                    <datalist id="breeds">
+                                        {this.state.breeds.map(breed => <option value={breed} key={breed} />)}
+                                    </datalist>
                                 </fieldset>
 
                             </div>
@@ -197,14 +209,9 @@ class SubmitForm extends React.Component {
 
                                 <fieldset className="form-group">
                                     <p>Dog Gender:</p>
-                                    <input
-                                        className="form-input"
-                                        name="sex"
-                                        type="text"
-                                        required
-                                        onChange={this.handleUserInput}
-                                        value={this.state.sex}
-                                    />
+                                    <div className="form-input" required onChange={this.handleUserInput}>
+                                        <input type="radio" name="gender" value="Male" /> Male  <input type="radio" name="gender" value="Female" /> Female
+                                    </div>
                                 </fieldset>
 
                                 <fieldset className="form-group">
@@ -236,14 +243,12 @@ class SubmitForm extends React.Component {
                             <div className='group'>
                                 <fieldset className="form-group">
                                 <p>Dog Size:</p>
-                                <input
-                                    className="form-input"
-                                    name="size"
-                                    type="text"
-                                    required
-                                    onChange={this.handleUserInput}
-                                    value={this.state.size}
-                                />
+                                <div className="form-input" required onChange={this.handleUserInput}>
+                                    <input type="radio" name="size" value="Small" /> Small <br/>
+                                    <input type="radio" name="size" value="Medium" /> Medium <br/>
+                                    <input type="radio" name="size" value="Large" /> Large <br/>
+                                    <input type="radio" name="size" value="Extra Large" /> Extra Large <br/>
+                                </div>
                             </fieldset>
 
                                 <fieldset className="form-group">

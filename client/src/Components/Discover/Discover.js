@@ -76,7 +76,7 @@ class Discover extends Component {
             	<button className="button" onClick={this.profileButton}>Edit My Profile!</button>
             	<Header><h3>Potential Matches</h3></Header>
             	<h5>Choose a New Match Range</h5>
-            	<button disabled={this.state.radius === 1610} onClick={()=>this.getMatches(1610)}>1 Miles</button>
+            	<button disabled={this.state.radius === 1610} onClick={()=>this.getMatches(1610)}>1 Mile</button>
             	<button disabled={this.state.radius === 8050} onClick={()=>this.getMatches(8050)}>5 Miles</button>
             	<button disabled={this.state.radius === 16100} onClick={()=>this.getMatches(16100)}>10 Miles</button>
             	<button disabled={this.state.radius === 24150} onClick={()=>this.getMatches(24150)}>15 Miles</button>
