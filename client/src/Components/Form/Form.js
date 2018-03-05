@@ -123,7 +123,7 @@ class Form extends Component {
                         </div>
                         <div className={`input-size form-group auto pad-top-20 ${this.errorClass(this.state.formErrors.email)}`}>
                             <label className='text-sml' htmlFor="email">Email address:</label>
-                            <input type="email" required className="form-control" name="email"
+                            <input type="email" className="form-control" name="email"
                                    placeholder="Email"
                                    required
                                    value={this.state.email}
