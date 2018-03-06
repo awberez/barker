@@ -28,6 +28,17 @@ export default {
 
   findMatches: function(userData) {
     return axios.get(`/api/matches/${userData.userId}`);
+<<<<<<< HEAD
+  },
+
+  checkMatch: function(matchData) {
+    return axios.post("/api/matchcheck", matchData);
+  },
+
+  addMatch: function(matchData) {
+    return axios.post("/api/matchlist", matchData);
+=======
+>>>>>>> b56c39eec29a535eb622f50d20d140457e4b8b4d
   },
 
   checkMatch: function(matchData) {
@@ -37,5 +48,9 @@ export default {
   addMatch: function(matchData) {
     return axios.post("/api/matchlist", matchData);
   },
+
+  getBaseBreedsList: function() {
+    return axios.get("https://dog.ceo/api/breeds/list");
+  }
 
 };

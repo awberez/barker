@@ -1,5 +1,9 @@
 // Requiring our models
 const db = require("../models"), bcrypt = require ("bcrypt"), Sequelize = require('sequelize'), Op = Sequelize.Op;
+const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyD3M0WR0Z9a1lnWBnz6Fx3F-iaBTDYCJjo',
+    Promise: Promise
+  });
 
 module.exports = (app, passport)=>{
 	app.post('/api/login', (req, res)=>{
@@ -37,6 +41,49 @@ module.exports = (app, passport)=>{
     });
 
     app.post('/api/newuser', (req, res)=>{
+        let geoLocat, address = req.body.addr1 + ', ' + req.body.city + ', ' + req.body.state;
+        googleMapsClient.geocode({address: address}).asPromise()
+	        .then((response)=>{
+	            console.log(response.json.results[0].geometry.location);
+	            geocode = response.json.results[0].geometry.location;
+	            geoLocat = { type: 'Point', coordinates: [geocode.lat, geocode.lng] }
+	            console.log('\n\n');
+	            console.log(geoLocat);
+	        }).then(()=>{
+	        	db.User.findOne({where: {id: req.body.userId}
+		        })
+		        .then(dbuser=>{
+		            dbuser.update({
+		                fname: req.body.fname,
+		                lname: req.body.lname,
+		                addr1: req.body.addr1,
+		                city: req.body.city,
+		                state: req.body.state,
+		                zip: req.body.zip,
+		                image: req.body.image,
+		                geoLocat: geoLocat,
+		                owner_profile: req.body.owner_profile
+		            }).then(updatedUser =>{
+		                db.Dog.create({
+		                    owner_id: updatedUser.id,
+		                    dog_name: req.body.dog_name,
+		                    breed: req.body.breed,
+		                    sex: req.body.sex,
+		                    age: req.body.age,
+		                    demeanor: req.body.demeanor,
+		                    size: req.body.size
+		                }).then(() => {
+		                    res.json(updatedUser);
+		                })
+		            })      
+		        })            
+	        })
+	        .catch((err)=>{
+	            console.log(err)
+	        }); 
+    });
+
+    /*app.post('/api/newuser', (req, res)=>{
         db.User.findOne({where: {id: req.body.userId}
         }).then((dbuser)=>{
             dbuser.update({
@@ -62,7 +109,7 @@ module.exports = (app, passport)=>{
                 })
             })
         })            
-    });
+    });*/
 
 	app.get('/api/profile/:id', (req, res)=>{
 		db.User.findOne({ where: { id: req.params.id } })
@@ -95,7 +142,10 @@ module.exports = (app, passport)=>{
 			}
 			}).then(user => {db.User.findAll({
 			   where: {
+<<<<<<< HEAD
 			       city: user.city,
+=======
+>>>>>>> b56c39eec29a535eb622f50d20d140457e4b8b4d
 			       id: {
 			           [Op.ne]: req.params.id
 			       }
