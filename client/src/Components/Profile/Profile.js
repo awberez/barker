@@ -4,30 +4,48 @@ import Header from "../Header";
 import API from "../../utils/API";
 import "./Profile.css";
 
+const cloudinary = window.cloudinary;
+
 class Profile extends Component {
   state = {
     newData: "",
     data: ""
   }
 
-  componentDidMount() {
-  	let userObj = {userId: this.props.userId}
-  	if (!userObj.userId) this.props.history.push('/');
-  	console.log(this.props.match);
-  	API.getUser(userObj)
-      .then(res => {
-      	if (!res.data.dog) {
-      	    this.props.finishForm();
-      	    this.props.history.push('/');
-        }
-      	this.setState({ user: res.data.user, dog: res.data.dog }, ()=>{console.log(res);})
-      })
-      .catch(err => console.log(err));
-  }
+	componentDidMount() {
+	  	let userObj = {userId: this.props.userId}
+	  	if (!userObj.userId) this.props.history.push('/');
+	  	console.log(this.props.match);
+	  	API.getUser(userObj)
+	        .then(res => {
+	      	if (!res.data.dog) {
+	      	    this.props.finishForm();
+	      	    this.props.history.push('/');
+	        }
+	      	else this.setState({ user: res.data.user, dog: res.data.dog }, ()=>{console.log(res);})
+	    })
+	    .catch(err => console.log(err));
+	}
 
-  matchButton = () => {
-  	this.props.history.push('/discover')
-  }
+	matchButton = () => {
+	  	this.props.history.push('/discover')
+	}
+
+	uploadWidget = event => {
+		event.preventDefault();
+		cloudinary.openUploadWidget({ cloud_name: 'dn5mficxw', upload_preset: 'a1tb6tyr', tags:['profile-img']},
+		    (error, result)=>{
+		        if (result) {
+		        	let userObj = {userId: this.props.userId, val: "image", data: result[0].secure_url};
+		            API.updateUser(userObj)
+				        .then(res => {
+				          console.log(res);
+				          this.setState({ user: {image: res.data.image} });
+				        })
+				        .catch(err => console.log(err));
+		        }
+		    });
+    }
 
   render() {
     return (
@@ -36,6 +54,14 @@ class Profile extends Component {
     		<Header><h3>Your Profile</h3></Header>
     		{ this.state && this.state.user &&
     		<div>
+    			<div className="profile-img">
+    				<img src={this.state.user.image} alt="profile" />
+    				<div className="upload">
+                        <button onClick={this.uploadWidget.bind(this)} className="upload-button">
+                            {this.state.image === "" ? "Choose Image" : "New Image"}
+                        </button>
+                    </div>
+    			</div>
 	    		<div className="userInfo">
 		      		<ProfileInfo
 						title={"First Name"}

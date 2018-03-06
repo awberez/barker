@@ -15,15 +15,17 @@ class App extends Component {
         this.handler = this.handler.bind(this);
       }
 
-    handler(id) {
-        this.setState({ userId: id });
+    handler(id, email) {
+        console.log(email);
+        this.setState({ userId: id, email: email });
         localStorage.setItem("userId", id);
-        console.log(this.state.userId);
+        localStorage.setItem("email", email);
       }
 
     componentWillMount() {
-        let userId = localStorage.getItem("userId");
-        this.setState({ userId: userId ? userId : false })
+        let userId = localStorage.getItem("userId"),
+        email = localStorage.getItem("email");
+        this.setState({ userId: userId ? userId : false, email: email ? email : false })
       }
 
     finishForm = () => {
@@ -33,6 +35,7 @@ class App extends Component {
     logOut = () => {
         this.setState({ userId: '' });
         localStorage.setItem("userId", '');
+        localStorage.setItem("email", '');
         window.location.reload();
     }
 
@@ -42,7 +45,10 @@ class App extends Component {
                 <div>
                     <Header>
                         { this.state && this.state.userId &&
-                            <button className="logout-btn" onClick={this.logOut}>Log Out</button>
+                            <span className="logout-btn">
+                                <span className="logged-in-as">logged in as {this.state.email}</span>
+                                <button onClick={this.logOut}>Log Out</button>
+                            </span>
                         }
                     </Header>
                     <Switch>
