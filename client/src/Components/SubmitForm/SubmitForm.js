@@ -19,12 +19,8 @@ class SubmitForm extends React.Component {
         age: "",
         size: "",
         demeanor: "",
-<<<<<<< HEAD
-        image: ""
-=======
         image: "",
         breeds: []
->>>>>>> b56c39eec29a535eb622f50d20d140457e4b8b4d
 }
 
     componentDidMount() {
@@ -46,14 +42,10 @@ class SubmitForm extends React.Component {
             userObj.userId = this.props.userId;
             console.log(userObj);
             API.createUser(userObj)
-<<<<<<< HEAD
-              .then(res => this.props.history.push("/profile"))
-=======
               .then(res => {
                 console.log(res);
                 this.props.history.push("/profile");
                })
->>>>>>> b56c39eec29a535eb622f50d20d140457e4b8b4d
               .catch(err => console.log(err));
         }
         else alert("Don't forget a profile image!");
@@ -257,14 +249,14 @@ class SubmitForm extends React.Component {
                                     <input type="radio" name="size" value="Large" /> Large <br/>
                                     <input type="radio" name="size" value="Extra Large" /> Extra Large <br/>
                                 </div>
-                            </fieldset>
+                                </fieldset>
 
                                 <fieldset className="form-group">
                                     <p>Profile Image:</p>
                                     {this.state && this.state.thumb &&
                                         <img src={this.state.thumb} alt="profile thumbnail" />
                                     }
-                                   <div className="upload">
+                                    <div className="upload">
                                         <button onClick={this.uploadWidget.bind(this)} className="upload-button">
                                             {this.state.image === "" ? "Choose Image" : "New Image"}
                                         </button>
