@@ -142,6 +142,10 @@ module.exports = (app, passport)=>{
 			}
 			}).then(user => {db.User.findAll({
 			   where: {
+<<<<<<< HEAD
+			       city: user.city,
+=======
+>>>>>>> b56c39eec29a535eb622f50d20d140457e4b8b4d
 			       id: {
 			           [Op.ne]: req.params.id
 			       }

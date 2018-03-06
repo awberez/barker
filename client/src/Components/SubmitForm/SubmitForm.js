@@ -19,8 +19,12 @@ class SubmitForm extends React.Component {
         age: "",
         size: "",
         demeanor: "",
+<<<<<<< HEAD
+        image: ""
+=======
         image: "",
         breeds: []
+>>>>>>> b56c39eec29a535eb622f50d20d140457e4b8b4d
 }
 
     componentDidMount() {
@@ -42,10 +46,14 @@ class SubmitForm extends React.Component {
             userObj.userId = this.props.userId;
             console.log(userObj);
             API.createUser(userObj)
+<<<<<<< HEAD
+              .then(res => this.props.history.push("/profile"))
+=======
               .then(res => {
                 console.log(res);
                 this.props.history.push("/profile");
                })
+>>>>>>> b56c39eec29a535eb622f50d20d140457e4b8b4d
               .catch(err => console.log(err));
         }
         else alert("Don't forget a profile image!");

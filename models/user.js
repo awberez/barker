@@ -42,10 +42,13 @@ module.exports = (sequelize, DataTypes) => {
     image: {type: DataTypes.STRING,
         allowNull: true
     }, 
+<<<<<<< HEAD
+=======
     geoLocat:{
         type: DataTypes.GEOMETRY,
         allowNull: true
     },
+>>>>>>> b56c39eec29a535eb622f50d20d140457e4b8b4d
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
     
