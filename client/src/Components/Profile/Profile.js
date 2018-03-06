@@ -44,8 +44,8 @@ class Profile extends Component {
 						type={"text"}
 						data={this.state.user.fname}
 						table={"user"}
-			        />
-			        <ProfileInfo
+                    />
+                    <ProfileInfo
 						title={"Last Name"}
 						val={"lname"}
 						id={this.props.userId}
