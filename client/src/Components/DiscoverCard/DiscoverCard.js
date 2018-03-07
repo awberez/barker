@@ -30,7 +30,7 @@ class DiscoverCard extends Component {
 	      .then(res => {
 	      	console.log(res);
 	      	this.setState({ matched: true });
-	      	alert(res.data ? "You've got a match!" : "Fingers crossed!");
+	      	if (res.data) alert("You've got a match!");
 	      })
 	      .catch(err => console.log(err));
 	}
