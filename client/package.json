@@ -8,6 +8,7 @@
     "axios-mock-adapter": "^1.14.0",
     "cloudinary-react": "^1.0.6",
     "geolib": "^2.0.24",
+    "nodemailer": "^4.6.2",
     "react": "^16.2.0",
     "react-body-images": "^1.0.1",
     "react-dom": "^16.2.0",
