@@ -26,7 +26,7 @@ class Discover extends Component {
 	        }
 	        else {
 	        	userCoords = res.data.user.geoLocat.coordinates;
-	        	this.getMatches(1610);
+	        	this.getMatches(1);
 	        }
 	      })
 	      .catch(err => console.log(err));
@@ -63,7 +63,16 @@ class Discover extends Component {
 		    {latitude: userCoords[0], longitude: userCoords[1]},
 		    {latitude: matchCoords[0], longitude: matchCoords[1]}
 		);
-		return dist <= radius;
+		return dist <= radius * 1610;
+	}
+
+	radiusSlider = event => {
+		this.setState({ radius: event.target.value });
+	}
+
+	radiusSubmit = event => {
+		event.preventDefault();
+		this.getMatches(this.state.radius);
 	}
 
 	profileButton = () => {
@@ -74,13 +83,13 @@ class Discover extends Component {
         return (
             <div>
             	<button className="button" onClick={this.profileButton}>Edit My Profile!</button>
-            	<Header><h3>Potential Matches</h3></Header>
-            	<h5>Choose a New Match Range</h5>
-            	<button disabled={this.state.radius === 1610} onClick={()=>this.getMatches(1610)}>1 Mile</button>
-            	<button disabled={this.state.radius === 8050} onClick={()=>this.getMatches(8050)}>5 Miles</button>
-            	<button disabled={this.state.radius === 16100} onClick={()=>this.getMatches(16100)}>10 Miles</button>
-            	<button disabled={this.state.radius === 24150} onClick={()=>this.getMatches(24150)}>15 Miles</button>
-            	<button disabled={this.state.radius === 40250} onClick={()=>this.getMatches(40250)}>25 Miles</button>
+            	<Header><h3>Potential Matches</h3></Header>	
+            	<h5>Choose a New Match Range (miles)</h5>
+            	<form onSubmit={this.radiusSubmit}>
+					<input type="range" min="1" max="25" value={this.state.radius} onChange={this.radiusSlider}/>
+					<input type="number" min="1" max="25" value={this.state.radius} onChange={this.radiusSlider} />
+					<button type="submit">Search!</button>
+				</form>
             	<div className="wrapper">
 	                {this.state && this.state.matches && 
 	                	this.state.userMatches.map(user => (
