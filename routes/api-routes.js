@@ -43,7 +43,7 @@ module.exports = (app, passport)=>{
     app.post('/api/newuser', (req, res)=>{
         let geoLocat, address = req.body.addr1 + ', ' + req.body.city + ', ' + req.body.state;
         googleMapsClient.geocode({address: address}).asPromise()
-	        .then((response)=>{
+	        .then(response => {
 	            console.log(response.json.results[0].geometry.location);
 	            geocode = response.json.results[0].geometry.location;
 	            geoLocat = { type: 'Point', coordinates: [geocode.lat, geocode.lng] }
@@ -52,7 +52,7 @@ module.exports = (app, passport)=>{
 	        }).then(()=>{
 	        	db.User.findOne({where: {id: req.body.userId}
 		        })
-		        .then(dbuser=>{
+		        .then(dbuser => {
 		            dbuser.update({
 		                fname: req.body.fname,
 		                lname: req.body.lname,
@@ -63,7 +63,7 @@ module.exports = (app, passport)=>{
 		                image: req.body.image,
 		                geoLocat: geoLocat,
 		                owner_profile: req.body.owner_profile
-		            }).then(updatedUser =>{
+		            }).then(updatedUser => {
 		                db.Dog.create({
 		                    owner_id: updatedUser.id,
 		                    dog_name: req.body.dog_name,
@@ -119,12 +119,38 @@ module.exports = (app, passport)=>{
 		});
 	});
 
-	app.post('/api/updateuser', (req, res)=> {
+	/*app.post('/api/updateuser', (req, res)=> {
 		db.User.findOne({ where: { id: req.body.userId } })
 			.then(dbUser => { dbUser.update({ [req.body.val]: req.body.data })
 				.then(user => { res.json(user);
 			});
 		});
+	});*/
+
+	app.post('/api/updateuser', (req, res)=> {
+		let geoLocat;
+		db.User.findOne({ where: { id: req.body.userId } })
+			.then(dbUser => { dbUser.update({ [req.body.val]: req.body.data })
+				.then(user => {
+					let address = user.addr1 + ', ' + user.city + ', ' + user.state;
+					googleMapsClient.geocode({address: address}).asPromise()
+				        .then(response => {
+				            console.log(response.json.results[0].geometry.location);
+				            geocode = response.json.results[0].geometry.location;
+				            geoLocat = { type: 'Point', coordinates: [geocode.lat, geocode.lng] }
+				            console.log('\n\n');
+				            console.log(geoLocat);
+				        }).then(()=>{
+				        		db.User.findOne({where: {id: req.body.userId}
+					        })
+					        .then(dbuser => {
+					            dbuser.update({ geoLocat: geoLocat })
+									.then(updatedUser => { res.json(updatedUser);
+								});
+							});
+						});
+				});
+			});
 	});
 
 	app.post('/api/updatedog', (req, res)=> {
