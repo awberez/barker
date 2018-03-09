@@ -42,13 +42,16 @@ app.use(passport.session());
 app.use(flash());
 
 // Static directory
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+const staticFiles = express.static(path.join(__dirname, 'client', 'build'));
+
+app.use(staticFiles);
 // Routes
 // =============================================================
 require("./routes/api-routes.js")(app, passport);
-app.get('*', (req, res) => {
+app.use('/*', staticFiles);
+/*app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  });
+  });*/
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({alter: true}).then(function() {
