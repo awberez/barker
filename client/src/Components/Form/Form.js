@@ -19,41 +19,6 @@ class Form extends Component {
         }
     }
 
-    componentDidMount() {
-        if (this.props.userId && !this.props.modal) this.props.history.push('/profile');
-        else if (this.props.userId && this.props.modal) this.setState({userId: this.props.userId, modal: true});
-      }
-
-    handleUserInput = (e) => {
-        const name = e.target.name, value = e.target.value;
-        this.setState({[name]: value},
-            () => { this.validateField(name, value) });
-    }
-
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors, emailValid = this.state.emailValid, passwordValid = this.state.passwordValid;
-        switch(fieldName) {
-            case 'email':
-                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-                break;
-            case 'password':
-                passwordValid = value.length >= 6;
-                fieldValidationErrors.password = passwordValid ? '': ' is too short';
-                break;
-            case 'passwordTwo':
-                passwordValid = value === this.state.password;
-                fieldValidationErrors.password = passwordValid ? '': ' does not match';
-                break;
-            default:
-                break;
-        }
-        this.setState({formErrors: fieldValidationErrors,
-            emailValid: emailValid,
-            passwordValid: passwordValid
-        }, this.validateForm);
-    }
-
     validateForm() {
         this.setState({formValid: this.state.emailValid && this.state.passwordValid});
     }
