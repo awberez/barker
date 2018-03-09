@@ -28,7 +28,7 @@ let mailOptions2 = {
   text: 'That was easy!'
 };
 
-module.exports = (app, passport)=>{
+module.exports = app =>{
 	app.post('/api/login', (req, res)=>{
         db.User.findOne({where: {user_login : req.body.user_login}
         }).then((user)=>{
