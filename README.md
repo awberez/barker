@@ -1,22 +1,25 @@
 # Barker - the Dog Tinder App
 
 [project description here]
+[heroku link here]
 
 ## Getting Started
 
 [instructions to install and use here]
 
 ```
-yarn install
+$ yarn install
 ```
 
 ```
-yarn start
+$ yarn start
 ```
+
+[screenshots of website]
 
 ## Technologies Used
 - React
-- Node
+- Node.js
 - Express Server
 - MySQL
 - Sequelize ORM
