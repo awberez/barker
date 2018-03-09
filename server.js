@@ -47,7 +47,7 @@ app.use(express.static("client/build"));
 // =============================================================
 require("./routes/api-routes.js")(app, passport);
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build/public/index.html'));
+    res.sendFile(path.join(__dirname, '/public/index.html'));
   });
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
