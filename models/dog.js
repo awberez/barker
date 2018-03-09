@@ -19,17 +19,11 @@ id: {type: DataTypes.INTEGER,
     sex: {type: DataTypes.STRING,
         allowNull: false
     },
-    age: {type: DataTypes.DATEONLY, 
+    age: {type: DataTypes.INTEGER, 
         allowNull: false
-    },
-    dog_weight: {type: DataTypes.INTEGER,
-        allowNull: false,
     },
     demeanor: {type: DataTypes.STRING,
         allowNull: false
-    },
-    energylvl: {type: DataTypes.STRING,
-        allowNull:false
     },
     size: {type: DataTypes.STRING, /* sm, md, lg, xl */
         allowNull: false

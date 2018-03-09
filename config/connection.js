@@ -9,7 +9,7 @@ else{
   con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "password", //change
+    password: "null", //change
     database: "doggiePlayDate_db"
   })
 }

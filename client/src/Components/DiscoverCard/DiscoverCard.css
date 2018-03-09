@@ -1,0 +1,43 @@
+.card {
+	background: #fff;
+	border-radius: 2px;
+	height: auto;
+	margin: 1rem;
+	position: relative;
+	width: 325px;
+	box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+	text-align: left;
+}
+
+h3 {
+	text-align: center;
+}
+
+.card > .img-container {
+	margin-top: 10px;
+	height: 60%;
+	overflow: hidden;
+	text-align: center;
+}
+
+.card > .img-container > img {
+	width: 60%
+}
+
+.card > .content {
+	border: 1px solid black;
+	margin: 10px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	font-size: 15px;
+}
+
+.card > .content > ul {
+	list-style-type: none;
+}
+
+.card > .match-btn {
+	width: 50%;
+	margin-left: 25%;
+	margin-bottom: 10px;
+}

@@ -1,7 +1,12 @@
-.userInfo {
-	float: left;
-}
+/*.userInfo {*/
+	/*display: flex;*/
+	/*flex-wrap: wrap;*/
+	/*justify-content: center;*/
 
-.dogInfo {
-	float: right;
-}
+/*}*/
+
+/*.dogInfo {*/
+	/*display: flex;*/
+	/*flex-wrap: wrap;*/
+	/*justify-content: center;*/
+/*}*/

@@ -19,18 +19,19 @@ class Form extends Component {
         }
     }
 
+    componentDidMount() {
+        if (this.props.userId && !this.props.modal) this.props.history.push('/profile');
+        else if (this.props.userId && this.props.modal) this.setState({userId: this.props.userId, modal: true});
+      }
+
     handleUserInput = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
+        const name = e.target.name, value = e.target.value;
         this.setState({[name]: value},
             () => { this.validateField(name, value) });
     }
 
     validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-
+        let fieldValidationErrors = this.state.formErrors, emailValid = this.state.emailValid, passwordValid = this.state.passwordValid;
         switch(fieldName) {
             case 'email':
                 emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
@@ -63,6 +64,7 @@ class Form extends Component {
 
     toggleState = () => {
         let signupState = this.state.signup;
+        console.log(signupState);
         this.setState({ 
             email: '', 
             password: '', 
@@ -78,7 +80,11 @@ class Form extends Component {
         if (!this.state.signup) {
             API.logIn(userObj)
               .then(res => {
-                if (res.data.users[0].id) this.props.history.push(`/profile/${res.data.users[0].id}`);
+                console.log(res);
+                if (res.data.id) {
+                    this.props.handler(res.data.id, res.data.user_login);
+                    this.props.history.push("/profile");
+                }
                 else {
                     fieldValidationErrors.invalid = 'email or password';
                     this.setState({ formErrors: fieldValidationErrors })
@@ -90,7 +96,10 @@ class Form extends Component {
             API.signUp(userObj)
               .then(res => {
                 console.log(res);
-                if (res.data.id) this.setState({userId: res.data.id, modal: true});
+                if (res.data.id) {
+                    this.props.handler(res.data.id, res.data.user_login);
+                    this.setState({userId: res.data.id, modal: true});
+                }
                 else {
                     fieldValidationErrors.email = 'is already in use';
                     this.setState({ formErrors: fieldValidationErrors })
@@ -109,46 +118,54 @@ class Form extends Component {
                         <div className="panel panel-default">
                             <FormErrors formErrors={this.state.formErrors} />
                         </div>
-                        <div className={`input-size form-group ${this.errorClass(this.state.formErrors.email)}`}>
-                            <label htmlFor="email">Email address</label>
-                            <input type="email" required className="form-control" name="email"
+                        <div className={`input-size form-group auto pad-top-20 ${this.errorClass(this.state.formErrors.email)}`}>
+                            <label className='text-sml' htmlFor="email">Email address:</label>
+                            <input type="email" className="form-control" name="email"
                                    placeholder="Email"
+                                   required
                                    value={this.state.email}
                                    onChange={this.handleUserInput}  />
                         </div>
                         {this.state.signup
                           ? <React.Fragment>
-                                <div className={`input-size form-group ${this.errorClass(this.state.formErrors.password)}`}>
-                                    <label htmlFor="password">Password</label>
+                                <div className={`input-size form-group auto ${this.errorClass(this.state.formErrors.password)}`}>
+                                    <label className='text-sml' htmlFor="password">Password:</label>
                                     <input type="password" className="form-control" name="password"
                                            placeholder="Password"
+                                           required
                                            value={this.state.password}
                                            onChange={this.handleUserInput}  />
                                 </div>
-                                <div className={`input-size form-group ${this.errorClass(this.state.formErrors.passwordTwo)}`}>
-                                    <label htmlFor="password">Confirm Password</label>
+                                <div className={`input-size form-group auto ${this.errorClass(this.state.formErrors.passwordTwo)}`}>
+                                    <label className='text-sml' htmlFor="password">Confirm Password:</label>
                                     <input type="password" className="form-control" name="passwordTwo"
                                            placeholder="Password"
+                                           required
                                            value={this.state.passwordTwo}
                                            onChange={this.handleUserInput}  />
                                 </div>
-                                <button type="submit" className="button" disabled={!this.state.formValid}>Sign up</button>
-                                <span onClick={this.toggleState}>
-                                    <p>Already have an account?<br/>Click here to log in.</p>
-                                </span>
+                                <div className='pad-top-20'>
+                                    <button type="submit" className="button" disabled={!this.state.formValid}>Sign up</button>
+                                    <span onClick={this.toggleState}>
+                                        <p>Already have an account?<br/>Click here to log in.</p>
+                                    </span>
+                                </div>
                             </React.Fragment>
                           : <React.Fragment>
-                                <div className={`input-size form-group ${this.errorClass(this.state.formErrors.password)}`}>
+                                <div className={`input-size form-group auto ${this.errorClass(this.state.formErrors.password)}`}>
                                     <label htmlFor="password">Password</label>
                                     <input type="password" className="form-control" name="password"
                                            placeholder="Password"
+                                           required
                                            value={this.state.password}
                                            onChange={this.handleUserInput}  />
                                 </div>
-                                <button type="submit" className="button" disabled={!this.state.formValid}>Log In</button>
-                                <span onClick={this.toggleState}>
-                                    <p>Don't have an account yet?<br/>Click here to sign up.</p>
-                                </span>
+                                <div className='pad-top-20'>
+                                    <button type="submit" className="button" disabled={!this.state.formValid}>Log In</button>
+                                    <span onClick={this.toggleState}>
+                                        <p>Don't have an account yet?<br/>Click here to sign up.</p>
+                                    </span>
+                                </div>
                             </React.Fragment>
                         }
                     </form>
