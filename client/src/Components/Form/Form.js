@@ -146,8 +146,10 @@ class Form extends Component {
                                 </div>
                                 <div className='pad-top-20'>
                                     <button type="submit" className="button" disabled={!this.state.formValid}>Sign up</button>
-                                    <span onClick={this.toggleState}>
-                                        <p>Already have an account?<br/>Click here to log in.</p>
+                                    <span>
+                                        <br/><br/>
+                                        <p>Already have an account?</p>
+                                        <button onClick={this.toggleState}>Log In</button>
                                     </span>
                                 </div>
                             </React.Fragment>
@@ -162,8 +164,10 @@ class Form extends Component {
                                 </div>
                                 <div className='pad-top-20'>
                                     <button type="submit" className="button" disabled={!this.state.formValid}>Log In</button>
-                                    <span onClick={this.toggleState}>
-                                        <p>Don't have an account yet?<br/>Click here to sign up.</p>
+                                    <span>
+                                        <br/><br/>
+                                        <p>Don't have an account yet?</p>
+                                        <button onClick={this.toggleState}>Sign Up</button>
                                     </span>
                                 </div>
                             </React.Fragment>
