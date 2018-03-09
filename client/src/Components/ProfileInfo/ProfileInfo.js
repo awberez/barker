@@ -44,6 +44,7 @@ class ProfileInfo extends Component {
     return (
       	<div>
 	        <InfoBox
+            className='sml-font'
             title={this.props.title}
             type={this.props.type}
     				edit={this.state.editing}
