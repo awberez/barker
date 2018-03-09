@@ -11,7 +11,7 @@ class Discover extends Component {
     constructor (props) {
         super(props);
         this.state = {
-        	radius: 1610
+        	radius: 1
         }
     }
 
