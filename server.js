@@ -37,10 +37,10 @@ require("./routes/api-routes.js")(app);
 
 //app.use('/*', staticFiles);
 
-/*app.get('*', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });*/
 // Syncing our sequelize models and then starting our Express app
