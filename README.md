@@ -1,19 +1,34 @@
 # Barker - the Dog Tinder App
 
-[project description here]
-[heroku link here]
+Welcome to Barker, a simple app to help you and your best bud find and match with nearby playdates. Check out the live demo [here](heroku link)!
+
+## Functionality
+
+
 
 ## Getting Started
 
-[instructions to install and use here]
+To run the application locally, first clone this repository to your computer using the following command:
+
+```
+$ git clone https://github.com/awberez/dog-tinder.git
+```
+
+Assuming mySQL is installed, navigate to `/dog-tinder/config` and edit the `config.json` file to incorporate your own mySQL password.
+
+Navigate to the generated folder and run the following command twice, once in the main directory and once within the `/dog-tinder/client` folder.
 
 ```
 $ yarn install
 ```
 
+After running 'yarn install' in both of those folders, navigate back to the main folder and run:
+
 ```
 $ yarn start
 ```
+
+From there the application will automatically open in your default internet browser, ready to use!
 
 [screenshots of website]
 
