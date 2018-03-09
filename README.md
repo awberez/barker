@@ -4,7 +4,7 @@ Welcome to Barker, a simple app to help you and your best bud find and match wit
 
 ## Functionality
 
-
+Using your address and playdate preferences such as dog breed, size, age, and even demeanor, our app will show you a list of matching "Barkers" within your specified distance with the option to "Match" with anyone that catches your eye! When there is a mutual match, both users will have the option to communicate and hopefully be on their way to a new puppy playdate.
 
 ## Getting Started
 
