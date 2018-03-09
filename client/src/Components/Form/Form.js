@@ -25,17 +25,13 @@ class Form extends Component {
       }
 
     handleUserInput = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
+        const name = e.target.name, value = e.target.value;
         this.setState({[name]: value},
             () => { this.validateField(name, value) });
     }
 
     validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-
+        let fieldValidationErrors = this.state.formErrors, emailValid = this.state.emailValid, passwordValid = this.state.passwordValid;
         switch(fieldName) {
             case 'email':
                 emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
@@ -68,6 +64,7 @@ class Form extends Component {
 
     toggleState = () => {
         let signupState = this.state.signup;
+        console.log(signupState);
         this.setState({ 
             email: '', 
             password: '', 
