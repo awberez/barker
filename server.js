@@ -14,6 +14,7 @@ var session = require('express-session');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var flash = require('connect-flash');
+const path = require('path');
 
 // Sets up the Express App
 // =============================================================
@@ -45,7 +46,9 @@ app.use(express.static("client/build"));
 // Routes
 // =============================================================
 require("./routes/api-routes.js")(app, passport);
-
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build/public/index.html'));
+  });
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({alter: true}).then(function() {
