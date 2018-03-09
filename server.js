@@ -42,7 +42,7 @@ app.use(passport.session());
 app.use(flash());
 
 // Static directory
-app.use(express.static("client/build"));
+app.use(express.static(path.join(__dirname, '/client/build')));
 // Routes
 // =============================================================
 require("./routes/api-routes.js")(app, passport);
