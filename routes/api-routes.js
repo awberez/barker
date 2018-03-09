@@ -1,5 +1,5 @@
 // Requiring our models
-const db = require("../models"), bcrypt = require ("bcrypt"), Sequelize = require('sequelize'), Op = Sequelize.Opvar, path = require('path');
+const db = require("../models"), bcrypt = require ("bcrypt"), Sequelize = require('sequelize'), Op = Sequelize.Op;
 const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyD3M0WR0Z9a1lnWBnz6Fx3F-iaBTDYCJjo',
     Promise: Promise
