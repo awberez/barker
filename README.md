@@ -18,14 +18,15 @@ $ yarn start
 [screenshots of website]
 
 ## Technologies Used
-- React
-- Node.js
-- Express Server
-- MySQL
-- Sequelize ORM
-- Passport
-- bcrypt
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/en/)
+- [Express Server](https://www.npmjs.com/package/express)
+- [MySQL](https://www.mysql.com/)
+- [Sequelize ORM](http://sequelizejs.com/)
+- [Passport](http://www.passportjs.org/)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
 - [Cloudinary](https://cloudinary.com/)
+- [Google Maps API](https://developers.google.com/maps/)
 
 ## Future Development
 
