@@ -1,0 +1,15 @@
+body {
+    background-image: url("dog1.png");
+    background-size: cover;
+    font-size: 18px;
+}
+
+.logout-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.logged-in-as {
+	margin-right: 10px;
+}

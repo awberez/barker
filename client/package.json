@@ -1,0 +1,24 @@
+{
+  "name": "dog-tinder",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3001/",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "axios-mock-adapter": "^1.14.0",
+    "cloudinary-react": "^1.0.6",
+    "geolib": "^2.0.24",
+    "nodemailer": "^4.6.2",
+    "react": "^16.2.0",
+    "react-body-images": "^1.0.1",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
