@@ -210,7 +210,7 @@ class SubmitForm extends React.Component {
                                 <fieldset className="form-group">
                                     <p>Dog Gender:</p>
                                     <div className="form-input" required onChange={this.handleUserInput}>
-                                        <input type="radio" name="sex" value="Male" /> Male  <input type="radio" name="gender" value="Female" /> Female
+                                        <input type="radio" name="sex" value="Male" /> Male  <input type="radio" name="sex" value="Female" /> Female
                                     </div>
                                 </fieldset>
 

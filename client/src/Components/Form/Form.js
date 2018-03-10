@@ -156,7 +156,7 @@ class Form extends Component {
                             </React.Fragment>
                           : <React.Fragment>
                                 <div className={`input-size form-group auto ${this.errorClass(this.state.formErrors.password)}`}>
-                                    <label htmlFor="password">Password</label>
+                                    <label className='text-sml' htmlFor="password">Password:</label>
                                     <input type="password" className="form-control" name="password"
                                            placeholder="Password"
                                            required

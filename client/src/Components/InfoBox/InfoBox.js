@@ -13,8 +13,8 @@ const InfoBox = props => (
 			  	<form onSubmit={props.handleSubmit}>
 					{props.type === "radio" && props.title === "Sex"
 						? 	<div onChange={props.handleChange}>
-								<input type="radio" name="gender" value="Male" /> Male<br></br>
-				  				<input type="radio" name="gender" value="Female" /> Female<br></br>
+								<input type="radio" name="sex" value="Male" /> Male<br></br>
+				  				<input type="radio" name="sex" value="Female" /> Female<br></br>
 							</div>
 						: 	props.type === "radio" && props.title === "Size"
 							? 	<div onChange={props.handleChange}>
