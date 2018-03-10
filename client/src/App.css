@@ -13,3 +13,24 @@ body {
 .logged-in-as {
 	margin-right: 10px;
 }
+
+.bg-color {
+    background-color: rgba(	220,199,170,1);
+}
+
+.title {
+    color: #6B7A8F;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.margin-bot-50 {
+    padding-bottom: 50px;
+}
+
+.find-but {
+    margin: 10px auto 50px;
+    width: 200px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+}
