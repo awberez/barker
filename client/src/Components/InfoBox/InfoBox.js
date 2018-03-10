@@ -6,10 +6,8 @@ const InfoBox = props => (
  		<span><b>{props.title}:</b></span>
  		{!props.edit && props.data
 	 	  ? <div >
+	 	  		<i className="fa fa-pencil-square-o" onClick={()=>{props.button(true)}}></i>
 				<p>{props.data}</p>
-				<button onClick={()=>{props.button(true)}}>
-					Edit
-				</button>
 	        </div>
 		  : <React.Fragment>
 			  	<form onSubmit={props.handleSubmit}>
@@ -29,9 +27,11 @@ const InfoBox = props => (
 									?	<textarea className="profileText" value={props.newData} onChange={props.handleChange} />
 									:   <input type={props.type} className="profileText" value={props.newData} onChange={props.handleChange} />
 					}
-					<input type="submit" value="Save" />
+					<button className="search-but" type="submit" value="Save">
+						Save
+					</button>
 				</form>
-				<button onClick={()=>{props.button(false)}}>
+				<button className="search-but" onClick={()=>{props.button(false)}}>
 					Cancel
 				</button>
 			</React.Fragment>

@@ -56,6 +56,9 @@ class App extends Component {
                         <Route path="/profile" render={props => <Profile {...props} finishForm={this.finishForm} userId={this.state.userId} />} />
                         <Route path="/discover" render={props => <Discover {...props} finishForm={this.finishForm} userId={this.state.userId} />} />
                     </Switch>
+                    { this.state && this.state.userId &&
+                        <div className="background-color"></div>
+                    }
                 </div>
             </Router>
         );

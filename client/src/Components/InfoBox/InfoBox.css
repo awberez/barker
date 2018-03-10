@@ -2,11 +2,12 @@
 	border: 1px solid black;
 	margin: 10px;
 	padding: 10px;
-	width: 35vh;
+	width: 20vh;
 	font-size: 20px;
-	background-color: #F7C331;
-	opacity: .5;
+	background-color: rgba(247,195,49,.8);
+	border-radius: 30px
 }
+
 
 .profileText {
 	font-size: 20px;
@@ -15,5 +16,14 @@
 
 p {
 	padding: 0px;
-	margin: 10px 10px 10px 0px;
+	font-size: .9rem;
+	/*margin: 10px 10px 10px 0px;*/
+}
+
+.fa {
+	float: right;
+}
+
+.profileData {
+	float: left;
 }

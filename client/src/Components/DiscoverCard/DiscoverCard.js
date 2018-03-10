@@ -43,6 +43,7 @@ class DiscoverCard extends Component {
 			    </div>
 			    <h3>{this.props.user.fname} and {this.props.dog.dog_name}</h3>
 			    <div className="content">
+			    	<br/>
 			      <p>{this.props.user.owner_profile}</p>
 			      <hr />
 			      <ul>

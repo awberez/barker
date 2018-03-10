@@ -81,15 +81,17 @@ class Discover extends Component {
 
     render () {
         return (
-            <div>
-            	<button className="button" onClick={this.profileButton}>Edit My Profile!</button>
-            	<Header><h3>Potential Matches</h3></Header>	
-            	<h5>Choose a New Match Range (miles)</h5>
-            	<form onSubmit={this.radiusSubmit}>
-					<input type="range" min="1" max="25" value={this.state.radius} onChange={this.radiusSlider}/>
-					<input type="number" min="1" max="25" value={this.state.radius} onChange={this.radiusSlider} />
-					<button type="submit">Search!</button>
-				</form>
+            <div className='bg-color'>
+            	<Header><h3 className='title'>Discover Matches</h3></Header>
+            	<button className="find-but flex-center" onClick={this.profileButton}>Edit My Profile!</button>
+            	<div className="match-range">
+	            	<p>Choose a Match Range (miles):</p>
+	            	<form onSubmit={this.radiusSubmit}>
+						<input type="range" min="1" max="25" value={this.state.radius} onChange={this.radiusSlider}/>
+						<input className="range-box" type="number" min="1" max="25" value={this.state.radius} onChange={this.radiusSlider} />
+						<button className="search-but" type="submit">Search!</button>
+					</form>
+				</div>
             	<div className="wrapper">
 	                {this.state && this.state.matches && 
 	                	this.state.userMatches.map(user => (

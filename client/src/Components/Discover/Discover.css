@@ -12,3 +12,12 @@
 .slidecontainer {
     width: 100%;
 }
+
+.range-box {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.match-range {
+	text-align: center;
+}
