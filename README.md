@@ -14,7 +14,7 @@ To run the application locally, first clone this repository to your computer usi
 $ git clone https://github.com/awberez/dog-tinder.git
 ```
 
-Assuming mySQL is installed, navigate to `/dog-tinder/config` and edit the `config.json` file to incorporate your own mySQL password and an empty database.
+Assuming mySQL is installed, navigate to `/dog-tinder/config` and edit the `config.json` file to incorporate your own mySQL password and an empty database in the "development" object.
 
 Navigate to the generated folder and run the following command twice, once in the main directory and once within the `/dog-tinder/client` folder.
 
