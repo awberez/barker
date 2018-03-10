@@ -1,6 +1,6 @@
 # Barker - the Dog Tinder App
 
-Welcome to Barker, a simple app to help you and your best bud find and match with nearby playdates. Check out the live demo [here](heroku link)!
+Welcome to Barker, a simple app to help you and your best bud find and match with nearby playdates. Check out the live demo [here](https://barkerapp.herokuapp.com/)!
 
 ## Functionality
 
