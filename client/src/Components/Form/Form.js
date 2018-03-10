@@ -148,7 +148,7 @@ class Form extends Component {
                                            onChange={this.handleUserInput}  />
                                 </div>
                                 <div className='pad-top-20'>
-                                    <button type="submit" className="button" disabled={!this.state.formValid}>Sign up</button>
+                                    <button type="submit" className="log-in-but" disabled={!this.state.formValid}>Sign up</button>
                                     <span onClick={this.toggleState}>
                                         <p>Already have an account?<br/>Click here to log in.</p>
                                     </span>

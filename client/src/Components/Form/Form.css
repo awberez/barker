@@ -45,12 +45,14 @@
     margin: auto;
 }
 
-.button {
-    width: 200px;
-    padding-bottom: 10px;
-    margin: auto;
-    border-radius: 20px;
-}
+/*.button {*/
+    /*width: 200px;*/
+    /*padding-bottom: 10px;*/
+    /*margin: auto;*/
+    /*border-radius: 20px;*/
+/*}*/
+
+
 
 .input-size {
     width: 150px;
@@ -67,4 +69,18 @@
 
 button {
     border-radius: 20px;
+    width: 50px;
+    height: 40px;
+    font-size: .8rem;
+}
+
+.new-photo {
+    width: 70px;
+    height: 60px;
+    border-radius: 50px;
+
+}
+
+.log-in-but {
+    width: 80%;
 }

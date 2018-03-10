@@ -72,7 +72,7 @@ class Discover extends Component {
 
     render () {
         return (
-            <div>
+            <div className='bg-color'>
             	<button className="button" onClick={this.profileButton}>Edit My Profile!</button>
             	<Header><h3>Potential Matches</h3></Header>
             	<h5>Choose a New Match Range</h5>

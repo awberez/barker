@@ -4,7 +4,7 @@
 	justify-content: center;
  	border: 2px solid black;
 	margin: 20px;
-	background-color: rgba(107,122,143,1);
+	background-color: rgba(107,122,143,.5);
 	border-radius: 50px;
 
 }
@@ -15,7 +15,7 @@
 	justify-content: center;
 	border: 2px solid black;
 	margin: 20px;
-	background-color: rgba(107,122,143,1);
+	background-color: rgba(107,122,143,.5);
 	border-radius: 50px;
 }
 

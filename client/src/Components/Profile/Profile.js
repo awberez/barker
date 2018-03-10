@@ -49,12 +49,12 @@ class Profile extends Component {
 
   render() {
     return (
-    	<div>
-    		<Header><h3>Your Profile</h3></Header>
-    		{ this.state && this.state.user &&
-    		<div>
+    	<div className='bg-color'>
+			<Header><h3 className='title'>Your Profile</h3></Header>
+			{ this.state && this.state.user &&
+			<div>
 
-				<button className="button flex-center" onClick={this.matchButton}>Find a Match!</button>
+				<button className="find-but flex-center" onClick={this.matchButton}>Find a Match!</button>
 
 				<div className='flex flex-space'>
 
@@ -122,7 +122,7 @@ class Profile extends Component {
 						<div className="profile-img">
 							<img className='prof-img' src={this.state.user.image} alt="profile" />
 							<div className="upload">
-								<button onClick={this.uploadWidget.bind(this)} className="upload-button">
+								<button onClick={this.uploadWidget.bind(this)} className="upload-button new-photo">
 									{this.state.image === "" ? "Choose Image" : "New Image"}
 								</button>
 							</div>
@@ -181,9 +181,11 @@ class Profile extends Component {
 						/>
 					</div>
 				</div>
-		    </div>
+			</div>
 			}
-	    </div>
+		</div>
+
+
     );
   }
 }
