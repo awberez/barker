@@ -8,3 +8,7 @@
   align-content: flex-start;
   overflow: auto;
 }
+
+.slidecontainer {
+    width: 100%;
+}

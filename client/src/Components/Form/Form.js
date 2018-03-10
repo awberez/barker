@@ -25,17 +25,13 @@ class Form extends Component {
       }
 
     handleUserInput = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
+        const name = e.target.name, value = e.target.value;
         this.setState({[name]: value},
             () => { this.validateField(name, value) });
     }
 
     validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-
+        let fieldValidationErrors = this.state.formErrors, emailValid = this.state.emailValid, passwordValid = this.state.passwordValid;
         switch(fieldName) {
             case 'email':
                 emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
@@ -68,6 +64,7 @@ class Form extends Component {
 
     toggleState = () => {
         let signupState = this.state.signup;
+        console.log(signupState);
         this.setState({ 
             email: '', 
             password: '', 
@@ -148,9 +145,12 @@ class Form extends Component {
                                            onChange={this.handleUserInput}  />
                                 </div>
                                 <div className='pad-top-20'>
+
                                     <button type="submit" className="log-in-but" disabled={!this.state.formValid}>Sign up</button>
-                                    <span onClick={this.toggleState}>
-                                        <p>Already have an account?<br/>Click here to log in.</p>
+                                    <span>
+                                        <br/><br/>
+                                        <p>Already have an account?</p>
+                                        <button onClick={this.toggleState}>Log In</button>
                                     </span>
                                 </div>
                             </React.Fragment>
@@ -165,8 +165,10 @@ class Form extends Component {
                                 </div>
                                 <div className='pad-top-20'>
                                     <button type="submit" className="button" disabled={!this.state.formValid}>Log In</button>
-                                    <span onClick={this.toggleState}>
-                                        <p>Don't have an account yet?<br/>Click here to sign up.</p>
+                                    <span>
+                                        <br/><br/>
+                                        <p>Don't have an account yet?</p>
+                                        <button onClick={this.toggleState}>Sign Up</button>
                                     </span>
                                 </div>
                             </React.Fragment>
