@@ -43,22 +43,20 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <Header>
-                        { this.state && this.state.userId &&
-                            <span className="logout-btn">
-                                <span className="logged-in-as">logged in as {this.state.email}</span>
-                                <button onClick={this.logOut}>Log Out</button>
-                            </span>
-                        }
-                    </Header>
+                    { this.state && this.state.userId &&
+                        <Header>
+                                <h1 className='title-main'>BARKER</h1>
+                                <span className="logout-btn">
+                                    <span className="logged-in-as">logged in as {this.state.email}</span>
+                                    <button className="log-but" onClick={this.logOut}>Log Out</button>
+                                </span>
+                        </Header>
+                    }
                     <Switch>
                         <Route exact path="/" render={props => <Form {...props} modal={this.state.modal} userId={this.state.userId} handler={this.handler} />} />
                         <Route path="/profile" render={props => <Profile {...props} finishForm={this.finishForm} userId={this.state.userId} />} />
                         <Route path="/discover" render={props => <Discover {...props} finishForm={this.finishForm} userId={this.state.userId} />} />
                     </Switch>
-                    { this.state && this.state.userId &&
-                        <div className="background-color"></div>
-                    }
                 </div>
             </Router>
         );

@@ -25,11 +25,16 @@ class Discover extends Component {
 	      	    this.props.history.push('/');
 	        }
 	        else {
+	        	document.body.classList.add("logged-in-background");
 	        	userCoords = res.data.user.geoLocat.coordinates;
 	        	this.getMatches(1);
 	        }
 	      })
 	      .catch(err => console.log(err));
+	}
+
+	componentWillUnmount() {
+	    document.body.classList.remove("logged-in-background");
 	}
 
 	getMatches = radius => {
@@ -82,7 +87,8 @@ class Discover extends Component {
     render () {
         return (
             <div className='bg-color'>
-            	<Header><h3 className='title'>Discover Matches</h3></Header>
+            	<br/>
+            	<Header><h3 className='title'>Discover</h3></Header>
             	<button className="find-but flex-center" onClick={this.profileButton}>Edit My Profile!</button>
             	<div className="match-range">
 	            	<p>Choose a Match Range (miles):</p>

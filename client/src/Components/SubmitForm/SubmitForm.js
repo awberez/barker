@@ -69,7 +69,7 @@ class SubmitForm extends React.Component {
                 <div className={containerClass}>
                     <form onSubmit={this.handleSubmit}>
                         <div className='modal-header'>
-                            <p>~ Please Enter Your Information ~</p>
+                            <h3>~ Please Enter Your Information ~</h3>
                         </div>
                         
                         <div className='modal-body flex flex-center'>
@@ -163,7 +163,7 @@ class SubmitForm extends React.Component {
 
 
                                 <fieldset className="form-group">
-                                    <p>Profile:</p>
+                                    <p>About Us:</p>
                                     <input
                                         className="form-input"
                                         name="owner_profile"
@@ -243,7 +243,7 @@ class SubmitForm extends React.Component {
                             <div className='group'>
                                 <fieldset className="form-group">
                                 <p>Dog Size:</p>
-                                <div className="form-input" required onChange={this.handleUserInput}>
+                                <div className="form-input size-radio" required onChange={this.handleUserInput}>
                                     <input type="radio" name="size" value="Small" /> Small <br/>
                                     <input type="radio" name="size" value="Medium" /> Medium <br/>
                                     <input type="radio" name="size" value="Large" /> Large <br/>
@@ -257,7 +257,7 @@ class SubmitForm extends React.Component {
                                         <img src={this.state.thumb} alt="profile thumbnail" />
                                     }
                                     <div className="upload">
-                                        <button onClick={this.uploadWidget.bind(this)} className="upload-button">
+                                        <button onClick={this.uploadWidget.bind(this)} className="find-but">
                                             {this.state.image === "" ? "Choose Image" : "New Image"}
                                         </button>
                                     </div>

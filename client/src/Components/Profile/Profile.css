@@ -1,4 +1,4 @@
-.userInfo {
+.info {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -6,17 +6,11 @@
 	margin: 20px;
 	background-color: rgba(107,122,143,.5);
 	border-radius: 50px;
-
 }
 
-.dogInfo {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	border: 2px solid black;
-	margin: 20px;
-	background-color: rgba(107,122,143,.5);
-	border-radius: 50px;
+.user-info {
+	margin-top: 100px;
+	margin-bottom: 100px;
 }
 
 .font-sml {
@@ -24,6 +18,7 @@
 }
 
 .prof-img {
+	margin: 10px 20px 0px 20px;
 	vertical-align: middle;
 	border-radius: 300px;
 	width: 200px;
@@ -47,6 +42,7 @@ b {
 
 body {
 	background-color: #6B7A8F;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .margin-reg {

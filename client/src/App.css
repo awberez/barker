@@ -1,10 +1,15 @@
 body {
+    font-size: 18px;
+    height: 100vh;
+}
+
+.dog-background {
     background-image: url("dog1.png");
     background-size: cover;
-    font-size: 18px;
 }
 
 .logout-btn {
+    font-family: 'Montserrat', sans-serif;
     position: absolute;
     right: 20px;
     top: 10px;
@@ -21,7 +26,13 @@ body {
 .title {
     color: #6B7A8F;
     font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.title-main {
+    font-weight: 700;
     font-size: 3rem;
+    font-family: 'Permanent Marker', cursive;
 }
 
 .margin-bot-50 {
@@ -29,9 +40,8 @@ body {
 }
 
 .find-but {
-    margin: 10px auto 50px;
-    width: 200px;
-    padding-bottom: 10px;
+    margin: 0px auto 20px;
+    width: 125px;
     border-radius: 20px;
 }
 
@@ -39,9 +49,16 @@ body {
     width: 100px;
 }
 
+.log-but {
+    width: 80px;
+}
+
 .background-color {
     height: 100vh;
     width: 100vw;
     background-color: rgba( 220,199,170,1);
-    z-index: -100;
+}
+
+button:focus { 
+    outline: 0 !important; 
 }

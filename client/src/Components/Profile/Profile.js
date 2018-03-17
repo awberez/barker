@@ -22,9 +22,16 @@ class Profile extends Component {
 	      	    this.props.finishForm();
 	      	    this.props.history.push('/');
 	        }
-	      	else this.setState({ user: res.data.user, dog: res.data.dog }, ()=>{console.log(res);})
+	      	else {
+	      		document.body.classList.add("logged-in-background");
+	      		this.setState({ user: res.data.user, dog: res.data.dog }, ()=>{console.log(res);})
+	      	}
 	    })
 	    .catch(err => console.log(err));
+	}
+
+	componentWillUnmount() {
+	    document.body.classList.remove("logged-in-background");
 	}
 
 	matchButton = () => {
@@ -50,15 +57,13 @@ class Profile extends Component {
   render() {
     return (
     	<div className='bg-color'>
-			<Header><h3 className='title'>Your Profile</h3></Header>
+    		<br/>
+			<Header><h3 className='title'>Profile</h3></Header>
 			{ this.state && this.state.user &&
 			<div>
-
 				<button className="find-but flex-center" onClick={this.matchButton}>Find a Match!</button>
-
 				<div className='flex flex-space'>
-
-					<div className="userInfo">
+					<div className="info user-info">
 						<ProfileInfo
 							title={"First Name"}
 							val={"fname"}
@@ -107,8 +112,19 @@ class Profile extends Component {
 							data={this.state.user.zip}
 							table={"user"}
 						/>
+					</div>
+
+					<div className="info">
+						<div className="profile-img">
+							<img className='prof-img' src={this.state.user.image} alt="profile" />
+							<div className="upload">
+								<button onClick={this.uploadWidget.bind(this)} className="find-but flex-center">
+									{this.state.image === "" ? "Choose Image" : "New Image"}
+								</button>
+							</div>
+						</div>
 						<ProfileInfo
-							title={"About Me"}
+							title={"About Us"}
 							val={"owner_profile"}
 							id={this.props.userId}
 							type={"textarea"}
@@ -117,20 +133,7 @@ class Profile extends Component {
 						/>
 					</div>
 
-					<div>
-
-						<div className="profile-img">
-							<img className='prof-img' src={this.state.user.image} alt="profile" />
-							<div className="upload">
-								<button onClick={this.uploadWidget.bind(this)} className="upload-button new-photo">
-									{this.state.image === "" ? "Choose Image" : "New Image"}
-								</button>
-							</div>
-						</div>
-
-					</div>
-
-					<div className="dogInfo">
+					<div className="info user-info">
 						<ProfileInfo
 							title={"Dog Name"}
 							val={"dog_name"}
@@ -183,6 +186,7 @@ class Profile extends Component {
 				</div>
 			</div>
 			}
+			<br/>
 		</div>
 
 

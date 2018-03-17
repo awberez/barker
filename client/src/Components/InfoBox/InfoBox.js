@@ -3,7 +3,7 @@ import "./InfoBox.css";
 
 const InfoBox = props => (    
  	<div className="profile">
- 		<span><b>{props.title}:</b></span>
+ 		<h3><b>{props.title}:</b></h3>
  		{!props.edit && props.data
 	 	  ? <div >
 	 	  		<i className="fa fa-pencil-square-o" onClick={()=>{props.button(true)}}></i>

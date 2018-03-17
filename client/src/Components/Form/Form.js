@@ -22,7 +22,12 @@ class Form extends Component {
     componentDidMount() {
         if (this.props.userId && !this.props.modal) this.props.history.push('/profile');
         else if (this.props.userId && this.props.modal) this.setState({userId: this.props.userId, modal: true});
+        document.body.classList.add("dog-background");
       }
+
+    componentWillUnmount() {
+        document.body.classList.remove("dog-background");
+    }
 
     handleUserInput = (e) => {
         const name = e.target.name, value = e.target.value;
@@ -114,6 +119,7 @@ class Form extends Component {
             <div className='flex-container flex-end flex-space'>
                 <div className="form" onSubmit={this.handleSubmit}>
                     <form className="flex-col">
+                        <br/>
                         <h2>{this.state.signup ? "Sign Up" : "Log In"}</h2>
                         <div className="panel panel-default">
                             <FormErrors formErrors={this.state.formErrors} />
@@ -145,12 +151,11 @@ class Form extends Component {
                                            onChange={this.handleUserInput}  />
                                 </div>
                                 <div className='pad-top-20'>
-
                                     <button type="submit" className="log-in-but" disabled={!this.state.formValid}>Sign up</button>
                                     <span>
                                         <br/><br/>
                                         <p>Already have an account?</p>
-                                        <button onClick={this.toggleState}>Log In</button>
+                                        <button className="log-but" onClick={this.toggleState}>Log In</button>
                                     </span>
                                 </div>
                             </React.Fragment>
@@ -164,11 +169,11 @@ class Form extends Component {
                                            onChange={this.handleUserInput}  />
                                 </div>
                                 <div className='pad-top-20'>
-                                    <button type="submit" className="button" disabled={!this.state.formValid}>Log In</button>
+                                    <button type="submit" className="log-in-but" disabled={!this.state.formValid}>Log In</button>
                                     <span>
                                         <br/><br/>
                                         <p>Don't have an account yet?</p>
-                                        <button onClick={this.toggleState}>Sign Up</button>
+                                        <button className="log-but" onClick={this.toggleState}>Sign Up</button>
                                     </span>
                                 </div>
                             </React.Fragment>
