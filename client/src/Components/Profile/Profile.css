@@ -3,7 +3,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
  	border: 2px solid black;
-	margin: 20px;
+	margin: 10px 20px 20px 20px;
 	background-color: rgba(107,122,143,.5);
 	border-radius: 50px;
 }
