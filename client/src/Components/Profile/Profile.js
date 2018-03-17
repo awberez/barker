@@ -118,7 +118,7 @@ class Profile extends Component {
 						<div className="profile-img">
 							<img className='prof-img' src={this.state.user.image} alt="profile" />
 							<div className="upload">
-								<button onClick={this.uploadWidget.bind(this)} className="find-but flex-center">
+								<button onClick={this.uploadWidget.bind(this)} className="img-but flex-center">
 									{this.state.image === "" ? "Choose Image" : "New Image"}
 								</button>
 							</div>

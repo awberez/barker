@@ -45,6 +45,12 @@ body {
     border-radius: 20px;
 }
 
+.img-but {
+    margin: 10px auto 10px;
+    width: 125px;
+    border-radius: 20px;
+}
+
 .search-but {
     width: 100px;
 }
